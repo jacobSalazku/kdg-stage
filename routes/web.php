@@ -26,7 +26,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/new')->name('new');
+    Route::get('/new', function(){
+        return view('new');
+    })->name('new');
 });
 
 require __DIR__.'/auth.php';

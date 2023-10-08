@@ -38,7 +38,7 @@ class InternshipController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
-            'website' => ['required', 'string', 'max:255'],
+            'website' => ['required', 'url:https', 'max:255'],
         ]);
 
         $internship = new internship();

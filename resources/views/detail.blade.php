@@ -13,7 +13,7 @@
                         <h5 class="text-xl font-semibold leading-none text-gray-800 dark:text-gray-200">{{$internship->title}}</h5>
                         <h4 class="text-l font-semibold leading-none text-gray-800 dark:text-gray-200">{{$internship->user->company}}</h4>
                         <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200">{{$internship->description}}</p>
-                        <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200 text-decoration-line: underline" ><a target="__blank" href="https://{{$internship->website}}">{{$internship->website}}</a></p>
+                        <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200 text-decoration-line: underline" ><a target="__blank" href="{{$internship->website}}">{{$internship->website}}</a></p>
                         <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200">Contact: {{$internship->user->first_name}} {{$internship->user->last_name}}</p>
                         <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200 text-decoration-line: underline" ><a href="mailto::{{$internship->user->email}}">{{$internship->user->email}}</a></p>
                         <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200 text-decoration-line: underline" ><a href="Tel:">{{$internship->user->phone_number}}</a></p>

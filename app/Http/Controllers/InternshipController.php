@@ -16,7 +16,7 @@ class InternshipController extends Controller
         $uri = request()->route()->getName();
 
         if ($uri === 'dashboard'){
-            $internships = internship::where('user_id', Auth::user()->id)->paginate(3);
+            $internships = internship::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(3);
 
             return view('dashboard', [
                 'internships' => $internships,

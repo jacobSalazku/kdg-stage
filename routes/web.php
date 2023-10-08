@@ -29,6 +29,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/new', function(){
         return view('new');
     })->name('new');
+    Route::post('/new', [\App\Http\Controllers\InternshipController::class, 'create'])->name('new');
 });
 
 require __DIR__.'/auth.php';

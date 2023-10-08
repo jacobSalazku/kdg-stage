@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\internship;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InternshipController extends Controller
 {
@@ -18,9 +19,24 @@ class InternshipController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+            'website' => ['required', 'string', 'max:255'],
+        ]);
+
+        $internship = new internship();
+
+        $internship->title = $request->title;
+        $internship->description = $request->description;
+        $internship->website = $request->website;
+        $internship->user_id = Auth::user()->id;
+
+        $internship->save();
+
+        return redirect()->route('dashboard');
     }
 
     /**

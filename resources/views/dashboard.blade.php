@@ -19,6 +19,8 @@
                             <p class="font-light text-xs text-gray-700 dark:text-gray-400">{{$internship->user->phone_number}}</p>
                         </a>
                     @endforeach
+                    <br>
+                    {{$internships->links()}}
                 </div>
             </div>
         </div>

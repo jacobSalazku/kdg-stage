@@ -13,7 +13,7 @@ class InternshipController extends Controller
      */
     public function index()
     {
-        $internships = internship::where('user_id', Auth::user()->id)->get();
+        $internships = internship::where('user_id', Auth::user()->id)->paginate(3);
 
         return view('dashboard', [
             'internships' => $internships,

@@ -22,7 +22,7 @@ class InternshipController extends Controller
                 'internships' => $internships,
             ]);
         }else{
-            $internships = internship::paginate(4);
+            $internships = internship::orderBy('created_at', 'desc')->paginate(4);
 
             return view('welcome', [
                 'internships' => $internships,

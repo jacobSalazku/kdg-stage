@@ -64,9 +64,13 @@ class InternshipController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(internship $internship)
+    public function show($id)
     {
-        //
+        $internship = internship::where('id', $id)->get();
+
+        return view('detail', [
+            'internships' => $internship,
+        ]);
     }
 
     /**

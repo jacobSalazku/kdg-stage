@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\InternshipController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,20 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [InternshipController::class, 'index'])->name('home');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/dashboard', [\App\Http\Controllers\InternshipController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [InternshipController::class, 'index'])->name('dashboard');
     Route::get('/new', function(){
         return view('new');
     })->name('new');
-    Route::post('/new', [\App\Http\Controllers\InternshipController::class, 'create'])->name('new');
+    Route::post('/new', [InternshipController::class, 'create'])->name('new');
 });
 
 require __DIR__.'/auth.php';

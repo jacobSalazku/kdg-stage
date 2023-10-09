@@ -25,5 +25,5 @@ te laten verlopen.
 <p><img src="public/img/ERD.png" alt="ERD"></p>
 
 ## ☎️ Contact
-@sam-kdg
+[Sam Serrien](https://github.com/sam-kdg)
 

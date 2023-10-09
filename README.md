@@ -24,7 +24,7 @@ te laten verlopen.
 ## 💾 ERD
 <p><img src="public/img/ERD.png" alt="ERD"></p>
 
-## Installation
+## ⚙️ Installation
 
 1. Repo clonen:
 ```bash

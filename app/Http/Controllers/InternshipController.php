@@ -11,7 +11,7 @@ class InternshipController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $uri = request()->route()->getName();
 
@@ -27,6 +27,14 @@ class InternshipController extends Controller
 
                 return view('welcome', [
                     'internships' => $internships,
+                    'filtered' => 0
+                ]);
+            case 'search':
+                $internships = internship::where('title', 'like', '%'. $request->input('query') . '%')->paginate(3);
+
+                return view('welcome', [
+                    'internships' => $internships,
+                    'filtered' => 1
                 ]);
         }
     }

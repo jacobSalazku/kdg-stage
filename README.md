@@ -24,6 +24,52 @@ te laten verlopen.
 ## 💾 ERD
 <p><img src="public/img/ERD.png" alt="ERD"></p>
 
+## Installation
+
+1. Repo clonen:
+```bash
+git clone git@github.com:mctantwerp/kdg-stage.mctantwerp.be.git
+cd kdg-stage.mctantwerp.be
+```
+2. Installeren:
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+```
+
+3. Environment credentials invullen:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=mailpit
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+4. Database + tables aanmaken: 
+```bash
+php artisan migrate
+```
+
+5. NPM packages installeren + builden: 
+```bash
+npm install
+npm run build
+```
+
 ## ☎️ Contact
 [Sam Serrien](https://github.com/sam-kdg)
 

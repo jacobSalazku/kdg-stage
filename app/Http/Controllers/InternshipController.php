@@ -15,18 +15,19 @@ class InternshipController extends Controller
     {
         $uri = request()->route()->getName();
 
-        if ($uri === 'dashboard'){
-            $internships = internship::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(3);
+        switch ($uri){
+            case 'dashboard':
+                $internships = internship::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(3);
 
-            return view('dashboard', [
-                'internships' => $internships,
-            ]);
-        }else{
-            $internships = internship::orderBy('created_at', 'desc')->paginate(4);
+                return view('dashboard', [
+                    'internships' => $internships,
+                ]);
+            case 'home':
+                $internships = internship::orderBy('created_at', 'desc')->paginate(4);
 
-            return view('welcome', [
-                'internships' => $internships,
-            ]);
+                return view('welcome', [
+                    'internships' => $internships,
+                ]);
         }
     }
 
@@ -64,7 +65,7 @@ class InternshipController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(int $id)
     {
         $internship = internship::where('id', $id)->get();
 
@@ -76,17 +77,41 @@ class InternshipController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(internship $internship)
+    public function edit(int $id)
     {
-        //
+        $internship = internship::find($id);
+
+        if ($internship->user_id !== Auth::user()->id){
+            return redirect('home');
+        }
+
+        return view('edit', [
+            'internship' => $internship,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, internship $internship)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'min:305','string'],
+            'website' => ['required', 'url:https', 'max:255'],
+        ]);
+
+        $internship = internship::find($request->id);
+
+        $internship->title = $request->title;
+        $internship->description = $request->description;
+        $internship->website = $request->website;
+        $internship->user_id = Auth::user()->id;
+
+        $internship->save();
+
+        return redirect('dashboard');
+
     }
 
     /**

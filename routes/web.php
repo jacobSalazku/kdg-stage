@@ -24,10 +24,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/dashboard', [InternshipController::class, 'index'])->name('dashboard');
+
     Route::get('/new', function(){
         return view('new');
     })->name('new');
     Route::post('/new', [InternshipController::class, 'create'])->name('new');
+
+    Route::get('/edit/{id}', [InternshipController::class, 'edit'])->name('edit');
+    Route::post('/edit/{id}', [InternshipController::class, 'update'])->name('update');
 });
 
 require __DIR__.'/auth.php';

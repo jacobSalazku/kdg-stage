@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form method="POST" action="{{ route('edit', ['id' => $internship->id]) }}">
+                    <form id="edit" method="POST" action="{{ route('edit', ['id' => $internship->id]) }}">
                         @csrf
 
                         <!-- Title -->
@@ -34,13 +34,18 @@
                         </div>
 
                         <input type="hidden" value="{{$internship->id}}">
-
-                        <div class="flex items-center justify-end mt-4">
-                            <x-primary-button class="ml-3">
-                                {{ __('Update') }}
-                            </x-primary-button>
-                        </div>
                     </form>
+                    <div class="flex items-center justify-end mt-4">
+                        <x-primary-button form="edit" class="ml-3">
+                            {{ __('Update') }}
+                        </x-primary-button>
+                        <form method="POST" action="{{ route('delete', ['id' => $internship->id]) }}">
+                            @csrf
+                            <x-danger-button class="ml-4">
+                                {{ __('Delete') }}
+                            </x-danger-button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

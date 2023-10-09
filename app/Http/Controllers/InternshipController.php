@@ -117,8 +117,16 @@ class InternshipController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(internship $internship)
+    public function destroy(int $id)
     {
-        //
+        $internship = internship::find($id);
+
+        if ($internship->user_id !== Auth::user()->id){
+            return redirect('home');
+        }
+
+        $internship->delete();
+
+        return redirect('dashboard');
     }
 }

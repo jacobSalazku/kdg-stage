@@ -32,6 +32,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/edit/{id}', [InternshipController::class, 'edit'])->name('edit');
     Route::post('/edit/{id}', [InternshipController::class, 'update'])->name('update');
+
+    Route::post('/delete/{id}', [InternshipController::class, 'destroy'])->name('delete');
 });
 
 require __DIR__.'/auth.php';

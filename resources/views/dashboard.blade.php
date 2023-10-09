@@ -17,6 +17,7 @@
                             <p class="mt-4 font-light text-xs text-gray-700 dark:text-gray-400">{{$internship->website}}</p>
                             <p class="font-light text-xs text-gray-700 dark:text-gray-400">{{$internship->user->email}}</p>
                             <p class="font-light text-xs text-gray-700 dark:text-gray-400">{{$internship->user->phone_number}}</p>
+                            <p class="font-light text-xs text-gray-700 dark:text-gray-400">{{$internship->updated_at->format('d-m-Y h:i')}}</p>
                         </a>
                     @endforeach
                     <br>

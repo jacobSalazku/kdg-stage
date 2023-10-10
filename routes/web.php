@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\InternshipController;
+use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,28 +15,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [InternshipController::class, 'index'])->name('home');
-Route::get('/jobs', [InternshipController::class, 'index'])->name('jobs');
-Route::get('/detail/{id}', [InternshipController::class, 'show'])->name('detail');
+Route::get('/', [JobController::class, 'index'])->name('home');
+Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
+Route::get('/detail/{id}', [JobController::class, 'show'])->name('detail');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/dashboard', [InternshipController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [JobController::class, 'index'])->name('dashboard');
 
     Route::get('/new', function(){
         return view('new');
     })->name('new');
-    Route::post('/new', [InternshipController::class, 'create'])->name('new');
+    Route::post('/new', [JobController::class, 'create'])->name('new');
 
-    Route::get('/edit/{id}', [InternshipController::class, 'edit'])->name('edit');
-    Route::post('/edit/{id}', [InternshipController::class, 'update'])->name('update');
+    Route::get('/edit/{id}', [JobController::class, 'edit'])->name('edit');
+    Route::post('/edit/{id}', [JobController::class, 'update'])->name('update');
 
-    Route::post('/delete/{id}', [InternshipController::class, 'destroy'])->name('delete');
+    Route::post('/delete/{id}', [JobController::class, 'destroy'])->name('delete');
 
-    Route::get('/search', [InternshipController::class, 'index'])->name('search');
+    Route::get('/search', [JobController::class, 'index'])->name('search');
 });
 
 require __DIR__.'/auth.php';

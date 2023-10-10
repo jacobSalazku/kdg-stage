@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\internship;
+use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
-class InternshipController extends Controller
+class JobController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,13 +18,13 @@ class InternshipController extends Controller
 
         switch ($uri){
             case 'dashboard':
-                $jobs = internship::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(3);
+                $jobs = Job::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(3);
 
                 return view('dashboard', [
                     'jobs' => $jobs,
                 ]);
             case 'jobs':
-                $jobs = internship::orderBy('created_at', 'desc')->paginate(4);
+                $jobs = Job::orderBy('created_at', 'desc')->paginate(4);
 
                 return view('welcome', [
                     'jobs' => $jobs,
@@ -38,7 +38,7 @@ class InternshipController extends Controller
                     'filtered' => 0
                 ]);
             case 'search':
-                $jobs = internship::where('title', 'like', '%'. $request->input('query') . '%')->paginate(3);
+                $jobs = Job::where('title', 'like', '%'. $request->input('query') . '%')->paginate(3);
 
                 return view('welcome', [
                     'jobs' => $jobs,
@@ -58,7 +58,7 @@ class InternshipController extends Controller
             'website' => ['required', 'url:https', 'max:255'],
         ]);
 
-        $job = new internship();
+        $job = new Job();
 
         $job->title = $request->title;
         $job->description = $request->description;
@@ -83,7 +83,7 @@ class InternshipController extends Controller
      */
     public function show(int $id)
     {
-        $job = internship::where('id', $id)->get();
+        $job = Job::where('id', $id)->get();
 
         return view('detail', [
             'jobs' => $job,
@@ -95,7 +95,7 @@ class InternshipController extends Controller
      */
     public function edit(int $id)
     {
-        $job = internship::find($id);
+        $job = Job::find($id);
 
         if ($job->user_id !== Auth::user()->id){
             return redirect('home');
@@ -117,7 +117,7 @@ class InternshipController extends Controller
             'website' => ['required', 'url:https', 'max:255'],
         ]);
 
-        $job = internship::find($request->id);
+        $job = Job::find($request->id);
 
         $job->title = $request->title;
         $job->description = $request->description;
@@ -135,7 +135,7 @@ class InternshipController extends Controller
      */
     public function destroy(int $id)
     {
-        $job = internship::find($id);
+        $job = Job::find($id);
 
         if ($job->user_id !== Auth::user()->id){
             return redirect('home');

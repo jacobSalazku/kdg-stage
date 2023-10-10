@@ -34,8 +34,7 @@ return [
         'client_id' => env('MICROSOFT_CLIENT_ID'),
         'client_secret' => env('MICROSOFT_CLIENT_SECRET'),
         'redirect' => env('MICROSOFT_REDIRECT_URI'),
-        'tenant' => env('MICROSOFT_TENANT_NAME', 'common'),
-        'include_tenant_info' => true,
+        'include_tenant_info' => false,
     ],
     'github' => [
         'client_id' => env('GITHUB_CLIENT_ID'),

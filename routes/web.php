@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [JobController::class, 'index'])->name('home');
 Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
 Route::get('/detail/{id}', [JobController::class, 'show'])->name('detail');
+Route::get('/search', [JobController::class, 'index'])->name('search');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -35,8 +36,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/edit/{id}', [JobController::class, 'update'])->name('update');
 
     Route::post('/delete/{id}', [JobController::class, 'destroy'])->name('delete');
-
-    Route::get('/search', [JobController::class, 'index'])->name('search');
 });
 
 require __DIR__.'/auth.php';

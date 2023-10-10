@@ -11,7 +11,7 @@
                             </button>
                             @if($filtered === 1)
                                 <button class="ml-2 px-3 py-2 rounded-full bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-200 dark:focus:bg-gray-600 transition duration-150 ease-in-out">
-                                    <a href="{{route('home')}}">Go back</a>
+                                    <a href="{{route('jobs')}}">Go back</a>
                                 </button>
                             @endif
                     </div>

@@ -95,14 +95,14 @@ class InternshipController extends Controller
      */
     public function edit(int $id)
     {
-        $internship = internship::find($id);
+        $job = internship::find($id);
 
-        if ($internship->user_id !== Auth::user()->id){
+        if ($job->user_id !== Auth::user()->id){
             return redirect('home');
         }
 
         return view('edit', [
-            'internship' => $internship,
+            'job' => $job,
         ]);
     }
 

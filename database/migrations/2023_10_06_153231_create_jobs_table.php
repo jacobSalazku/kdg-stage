@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('website');
+            $table->string('company');
+            $table->string('phone_number');
+            $table->string('email');
             $table->timestamps();
             $table->softDeletes();
         });

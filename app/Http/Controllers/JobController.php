@@ -55,14 +55,21 @@ class JobController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'min:305','string'],
+            'company' => ['required', 'string', 'max:255'],
             'website' => ['required', 'url:https', 'max:255'],
+            'phone_number' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+
         ]);
 
         $job = new Job();
 
         $job->title = $request->title;
         $job->description = $request->description;
+        $job->company = $request->company;
         $job->website = $request->website;
+        $job->phone_number = $request->phone_number;
+        $job->email = $request->email;
         $job->user_id = Auth::user()->id;
 
         $job->save();
@@ -114,14 +121,20 @@ class JobController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'min:305','string'],
+            'company' => ['required', 'string', 'max:255'],
             'website' => ['required', 'url:https', 'max:255'],
+            'phone_number' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
         ]);
 
         $job = Job::find($request->id);
 
         $job->title = $request->title;
         $job->description = $request->description;
+        $job->company = $request->company;
         $job->website = $request->website;
+        $job->phone_number = $request->phone_number;
+        $job->email = $request->email;
         $job->user_id = Auth::user()->id;
 
         $job->save();

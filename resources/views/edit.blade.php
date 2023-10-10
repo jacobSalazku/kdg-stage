@@ -20,11 +20,32 @@
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
                         </div>
 
+                        <!-- Company -->
+                        <div class="mt-4">
+                            <x-input-label for="company" :value="__('Company')" />
+                            <x-text-input id="company" class="block mt-1 w-full" type="text" name="company" :value="$job->company" required autofocus autocomplete="company" />
+                            <x-input-error :messages="$errors->get('company')" class="mt-2" />
+                        </div>
+
                         <!-- Website -->
                         <div class="mt-4">
                             <x-input-label for="website" :value="__('Website URL')" />
                             <x-text-input id="website" class="block mt-1 w-full" type="text" name="website" :value="$job->website" required autofocus autocomplete="website" />
                             <x-input-error :messages="$errors->get('website')" class="mt-2" />
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="mt-4">
+                            <x-input-label for="phone_number" :value="__('Phone Number')" />
+                            <x-text-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number" :value="$job->phone_number" required autofocus autocomplete="phone_number" />
+                            <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mt-4">
+                            <x-input-label for="email" :value="__('Email')" />
+                            <x-text-input id="email" class="block mt-1 w-full" type="text" name="email" :value="$job->email" required autofocus autocomplete="email" />
+                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
 
                         <input type="hidden" value="{{$job->id}}">

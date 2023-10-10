@@ -14,7 +14,6 @@ class InternshipController extends Controller
      */
     public function index(Request $request)
     {
-        //@TODO fix variable naming for jobs & jobs + refactor in views
         $uri = request()->route()->getName();
 
         switch ($uri){
@@ -84,10 +83,10 @@ class InternshipController extends Controller
      */
     public function show(int $id)
     {
-        $internship = internship::where('id', $id)->get();
+        $job = internship::where('id', $id)->get();
 
         return view('detail', [
-            'internships' => $internship,
+            'jobs' => $job,
         ]);
     }
 

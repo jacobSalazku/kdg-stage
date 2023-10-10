@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\internship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class InternshipController extends Controller
 {
@@ -13,27 +14,35 @@ class InternshipController extends Controller
      */
     public function index(Request $request)
     {
+        //@TODO fix variable naming for jobs & jobs + refactor in views
         $uri = request()->route()->getName();
 
         switch ($uri){
             case 'dashboard':
-                $internships = internship::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(3);
+                $jobs = internship::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(3);
 
                 return view('dashboard', [
-                    'internships' => $internships,
+                    'jobs' => $jobs,
                 ]);
-            case 'home':
-                $internships = internship::orderBy('created_at', 'desc')->paginate(4);
+            case 'jobs':
+                $jobs = internship::orderBy('created_at', 'desc')->paginate(4);
 
                 return view('welcome', [
-                    'internships' => $internships,
+                    'jobs' => $jobs,
+                    'filtered' => 0
+                ]);
+            case 'home':
+                $companies = user::get();
+
+                return view('internships', [
+                    'companies' => $companies,
                     'filtered' => 0
                 ]);
             case 'search':
-                $internships = internship::where('title', 'like', '%'. $request->input('query') . '%')->paginate(3);
+                $jobs = internship::where('title', 'like', '%'. $request->input('query') . '%')->paginate(3);
 
                 return view('welcome', [
-                    'internships' => $internships,
+                    'jobs' => $jobs,
                     'filtered' => 1
                 ]);
         }

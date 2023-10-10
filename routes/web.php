@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [InternshipController::class, 'index'])->name('home');
+Route::get('/jobs', [InternshipController::class, 'index'])->name('jobs');
 Route::get('/detail/{id}', [InternshipController::class, 'show'])->name('detail');
 
 

@@ -58,14 +58,14 @@ class InternshipController extends Controller
             'website' => ['required', 'url:https', 'max:255'],
         ]);
 
-        $internship = new internship();
+        $job = new internship();
 
-        $internship->title = $request->title;
-        $internship->description = $request->description;
-        $internship->website = $request->website;
-        $internship->user_id = Auth::user()->id;
+        $job->title = $request->title;
+        $job->description = $request->description;
+        $job->website = $request->website;
+        $job->user_id = Auth::user()->id;
 
-        $internship->save();
+        $job->save();
 
         return redirect()->route('dashboard');
     }
@@ -117,14 +117,14 @@ class InternshipController extends Controller
             'website' => ['required', 'url:https', 'max:255'],
         ]);
 
-        $internship = internship::find($request->id);
+        $job = internship::find($request->id);
 
-        $internship->title = $request->title;
-        $internship->description = $request->description;
-        $internship->website = $request->website;
-        $internship->user_id = Auth::user()->id;
+        $job->title = $request->title;
+        $job->description = $request->description;
+        $job->website = $request->website;
+        $job->user_id = Auth::user()->id;
 
-        $internship->save();
+        $job->save();
 
         return redirect('dashboard');
 
@@ -135,13 +135,13 @@ class InternshipController extends Controller
      */
     public function destroy(int $id)
     {
-        $internship = internship::find($id);
+        $job = internship::find($id);
 
-        if ($internship->user_id !== Auth::user()->id){
+        if ($job->user_id !== Auth::user()->id){
             return redirect('home');
         }
 
-        $internship->delete();
+        $job->delete();
 
         return redirect('dashboard');
     }

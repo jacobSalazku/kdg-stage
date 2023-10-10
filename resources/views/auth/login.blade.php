@@ -2,7 +2,13 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <x-primary-button class="w-full">
+        <a href="{{ route('oauth.login', [ 'provider' => 'microsoft' ]) }}" class="mx-auto">Log in with Microsoft</a>
+    </x-primary-button>
+    <x-primary-button class="w-full mt-4">
+        <a href="{{ route('oauth.login', [ 'provider' => 'github' ]) }}" class="mx-auto">Log in with GitHub</a>
+    </x-primary-button>
+    <form class="mt-4" method="POST" action="{{ route('login') }}">
         @csrf
 
         <!-- Email Address -->

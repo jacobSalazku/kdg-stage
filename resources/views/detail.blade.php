@@ -16,7 +16,7 @@
                         <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200">Posted: {{$job->updated_at->format('d-m-Y h:i')}}</p>
                         <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200 text-decoration-line: underline" ><a target="__blank" href="{{$job->website}}">{{$job->website}}</a></p>
                         <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200">Contact: {{$job->user->first_name}} {{$job->user->last_name}}</p>
-                        <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200 text-decoration-line: underline" ><a href="mailto::{{$job->user->email}}">{{$job->user->email}}</a></p>
+                        <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200 text-decoration-line: underline" ><a href="mailto:{{$job->user->email}}">{{$job->user->email}}</a></p>
                         <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200 text-decoration-line: underline" ><a href="Tel:">{{$job->user->phone_number}}</a></p>
                     @endforeach
                     <p class="text-l font-semibold mt-4"><a href="{{route('home')}}">Return to overview</a></p>

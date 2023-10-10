@@ -26,7 +26,7 @@ class JobController extends Controller
             case 'jobs':
                 $jobs = Job::orderBy('created_at', 'desc')->paginate(4);
 
-                return view('welcome', [
+                return view('jobs', [
                     'jobs' => $jobs,
                     'filtered' => 0
                 ]);

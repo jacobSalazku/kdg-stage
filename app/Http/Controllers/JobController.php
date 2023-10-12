@@ -18,7 +18,7 @@ class JobController extends Controller
 
         switch ($uri){
             case 'dashboard':
-                $jobs = Job::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(3);
+                $jobs = Job::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(1);
 
                 return view('dashboard', [
                     'jobs' => $jobs,

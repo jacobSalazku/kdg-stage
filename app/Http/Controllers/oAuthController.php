@@ -26,7 +26,7 @@ class oAuthController extends Controller
                 $user->provider_id = $providerUser->getId();
                 $user->email = $providerUser->mail;
                 $user->name = $providerUser->name;
-                $user->company = $providerUser->user['officeLocation'];
+                $user->company = $providerUser->user['officeLocation'] ?? '??';
                 $user->save();
                 break;
 
@@ -34,7 +34,15 @@ class oAuthController extends Controller
                 $user->provider_id = $providerUser->getId();
                 $user->email = $providerUser->email;
                 $user->name = $providerUser->nickname;
-                $user->company = $providerUser->user['company'];
+                $user->company = $providerUser->user['company'] ?? '??';
+                $user->save();
+                break;
+
+            case 'google':
+                $user->provider_id = $providerUser->getId();
+                $user->email = $providerUser->email;
+                $user->name = $providerUser->name;
+                $user->company = '??';
                 $user->save();
                 break;
         }

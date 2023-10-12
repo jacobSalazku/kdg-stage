@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\oAuthController;
+use App\Http\Controllers\InternshipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use App\Http\Controllers\oAuthController;
 |
 */
 
-Route::get('/', [JobController::class, 'index'])->name('home');
+Route::get('/', [InternshipController::class, 'index'])->name('home');
 Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
 Route::get('/detail/{id}', [JobController::class, 'show'])->name('detail');
 Route::get('/search', [JobController::class, 'index'])->name('search');
@@ -39,6 +40,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/edit/{id}', [JobController::class, 'update'])->name('update');
 
     Route::post('/delete/{id}', [JobController::class, 'destroy'])->name('delete');
+
+    Route::post('/create-internship', [InternshipController::class, 'update'])->name('create_internship');
 });
 
 require __DIR__.'/auth.php';

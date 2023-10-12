@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Internship;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\In;
 
 class InternshipController extends Controller
 {
@@ -12,54 +14,42 @@ class InternshipController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Internship::where('published', 1)->get();
+
+        return view('internships', [
+            'companies' => $companies,
+            'filtered' => 0
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function update(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'company' => ['required', 'string', 'max:255'],
+            'website' => ['required', 'url:https', 'max:255'],
+            'phone_number' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Internship $internship)
-    {
-        //
-    }
+        $internship = Internship::firstOrNew(['email' => $request->email]);
+        $internship->user_id = Auth::user()->id;
+        $internship->company = $request->company;
+        $internship->email = $request->email;
+        $internship->phone_number = $request->phone_number;
+        $internship->website = $request->website;
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Internship $internship)
-    {
-        //
-    }
+        if ($request->published === 'on'){
+            $internship->published = 1;
+            $internship->save();
+        }else{
+            $internship->published = 0;
+            $internship->save();
+        }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Internship $internship)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Internship $internship)
-    {
-        //
+        return redirect('dashboard');
     }
 }

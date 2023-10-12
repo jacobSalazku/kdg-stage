@@ -10,6 +10,13 @@ class Internship extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'phone_number',
+        'email',
+        'company',
+        'website',
+    ];
+
     public function user(): HasOne
     {
         return $this->hasOne(User::class);

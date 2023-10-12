@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
+use App\Models\Internship;
 
 class JobController extends Controller
 {
@@ -19,9 +19,11 @@ class JobController extends Controller
         switch ($uri){
             case 'dashboard':
                 $jobs = Job::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(1);
+                $internship = Internship::where('user_id', Auth::user()->id)->first();
 
                 return view('dashboard', [
                     'jobs' => $jobs,
+                    'internship' => $internship
                 ]);
             case 'jobs':
                 $jobs = Job::orderBy('created_at', 'desc')->paginate(4);
@@ -30,13 +32,7 @@ class JobController extends Controller
                     'jobs' => $jobs,
                     'filtered' => 0
                 ]);
-            case 'home':
-                $companies = user::get();
 
-                return view('internships', [
-                    'companies' => $companies,
-                    'filtered' => 0
-                ]);
             case 'search':
                 $jobs = Job::where('title', 'like', '%'. $request->input('query') . '%')->paginate(3);
 

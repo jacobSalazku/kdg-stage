@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\InternshipController;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -48,5 +50,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function job(): hasMany
     {
         return $this->hasMany(Job::class);
+    }
+
+    public function internship(): HasOne
+    {
+        return $this->hasOne(Internship::class);
     }
 }

@@ -7,7 +7,7 @@
                         <h5 class="text-xl font-semibold leading-none text-gray-800 dark:text-gray-200">{{$job->title}}</h5>
                         <h4 class="text-l font-semibold leading-none text-gray-800 dark:text-gray-200">{{$job->company}}</h4>
                         <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200">{{$job->description}}</p>
-                        <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200">Posted: {{$job->updated_at->format('d-m-Y h:i')}}</p>
+                        <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200">Posted: {{$job->updated_at->format('d-m-Y H:i')}}</p>
                         <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200 text-decoration-line: underline" ><a target="__blank" href="{{$job->website}}">{{$job->website}}</a></p>
                         <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200">Contact: {{$job->user->name}}</p>
                         <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200 text-decoration-line: underline" ><a href="mailto:{{$job->email}}">{{$job->email}}</a></p>

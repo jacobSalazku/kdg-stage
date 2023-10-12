@@ -11,7 +11,7 @@
                             <p class="mt-4 font-light text-xs text-gray-700 dark:text-gray-400">{{$job->website}}</p>
                             <p class="font-light text-xs text-gray-700 dark:text-gray-400">{{$job->email}}</p>
                             <p class="font-light text-xs text-gray-700 dark:text-gray-400">{{$job->phone_number}}</p>
-                            <p class="font-light text-xs text-gray-700 dark:text-gray-400">{{$job->updated_at->format('d-m-Y h:i')}}</p>
+                            <p class="font-light text-xs text-gray-700 dark:text-gray-400">{{$job->updated_at->format('d-m-Y H:i')}}</p>
                         </a>
                     @endforeach
                     <br>

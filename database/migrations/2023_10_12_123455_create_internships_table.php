@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('internships', function (Blueprint $table) {
             $table->id();
-            $table->int('user_id');
+            $table->integer('user_id');
             $table->string('company');
             $table->string('email');
             $table->string('phone_number');

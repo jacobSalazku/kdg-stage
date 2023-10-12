@@ -25,12 +25,16 @@ class oAuthController extends Controller
             case 'microsoft':
                 $user->provider_id = $providerUser->getId();
                 $user->email = $providerUser->mail;
+                $user->name = $providerUser->name;
+                $user->company = $providerUser->user['officeLocation'];
                 $user->save();
                 break;
 
             case 'github':
                 $user->provider_id = $providerUser->getId();
                 $user->email = $providerUser->email;
+                $user->name = $providerUser->nickname;
+                $user->company = $providerUser->user['company'];
                 $user->save();
                 break;
         }

@@ -13,7 +13,7 @@
                         <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200 text-decoration-line: underline" ><a href="mailto:{{$job->email}}">{{$job->email}}</a></p>
                         <p class="text-sm mt-4 font-normal leading-none text-gray-800 dark:text-gray-200 text-decoration-line: underline" ><a href="Tel:">{{$job->phone_number}}</a></p>
                     @endforeach
-                    <p class="text-l font-semibold mt-4"><a href="{{route('home')}}">Return to overview</a></p>
+                    <p class="text-l font-semibold mt-4"><a href="{{route('jobs')}}">Return to overview</a></p>
                 </div>
             </div>
         </div>

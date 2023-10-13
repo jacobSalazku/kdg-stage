@@ -28,7 +28,7 @@
                                 @csrf
                                 <div class="mt-4">
                                     <x-input-label for="published" :value="__('Offer internships:')" />
-                                    <x-checkbox id="published" class="block mt-1 w-1/2" name="published" :checked="$internship->published == 1"/>
+                                    <x-checkbox id="published" class="block mt-1 w-1/2" name="published" :checked="($internship->published ?? 0) == 1"/>
                                     <x-input-error :messages="$errors->get('title')" class="mt-2" />
                                 </div>
                                 <div class="mt-4">

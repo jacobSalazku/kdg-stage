@@ -52,10 +52,6 @@ class User extends Resource
 
             HasOne::make('Internship'),
 
-            Text::make('Company'),
-
-            DateTime::make('Email Verified At'),
-
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -65,6 +61,10 @@ class User extends Resource
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
+
+            Text::make('Company'),
+
+            DateTime::make('Email Verified At'),
 
             Password::make('Password')
                 ->onlyOnForms()

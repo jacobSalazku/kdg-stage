@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Internship;
@@ -20,10 +21,12 @@ class JobController extends Controller
             case 'dashboard':
                 $jobs = Job::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(1);
                 $internship = Internship::where('user_id', Auth::user()->id)->first();
+                $tags = Tag::all();
 
                 return view('dashboard', [
                     'jobs' => $jobs,
-                    'internship' => $internship
+                    'internship' => $internship,
+                    'tags' => $tags
                 ]);
             case 'jobs':
                 $jobs = Job::orderBy('created_at', 'desc')->paginate(4);

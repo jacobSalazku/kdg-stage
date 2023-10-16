@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Internship;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\In;
 
 class InternshipController extends Controller
@@ -48,6 +50,17 @@ class InternshipController extends Controller
         }else{
             $internship->published = 0;
             $internship->save();
+        }
+
+        $selectedSkills = $request->input('skills', []);
+
+        foreach ($selectedSkills as $skill){
+            $tag = Tag::where('name', $skill)->first();
+            DB::table('tag_internship')->insert([
+                'internship_id' => $internship->id,
+                'tag_id' => $tag->id,
+            ]);
+
         }
 
         return redirect('dashboard');

@@ -51,6 +51,15 @@
                                     <x-text-input id="website" class="block mt-1 w-full" type="text" :value="$internship->website ?? old('website')" name="website" required autofocus autocomplete="website" />
                                     <x-input-error :messages="$errors->get('website')" class="mt-2" />
                                 </div>
+                                <div class="mt-4">
+                                    <x-input-label :value="__('Skills')" />
+                                    @foreach($tags as $tag)
+                                        <div class="flex items-center">
+                                            <x-checkbox id="{{$tag->name}}" class="mt-1" name="skills[]" value="{{$tag->name}}"/>
+                                            <x-input-label class="ml-1" for="{{$tag->name}}">{{$tag->name}}</x-input-label>
+                                        </div>
+                                    @endforeach
+                                </div>
                                 <div class="flex items-center justify-start mt-4">
                                     <x-primary-button>
                                         {{ __('Save') }}

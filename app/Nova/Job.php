@@ -45,6 +45,7 @@ class Job extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('User')->displayUsing(fn() => "{$this->user->name}"),
             Text::make('Title'),
             Text::make('Company'),
             Email::make('Email')->showOnDetail(),

@@ -2,7 +2,9 @@
 
 namespace App\Nova\Dashboards;
 
-use Laravel\Nova\Cards\Help;
+use App\Nova\Metrics\NewInternships;
+use App\Nova\Metrics\NewUsers;
+use App\Nova\Metrics\NewJobs;
 use Laravel\Nova\Dashboards\Main as Dashboard;
 
 class Main extends Dashboard
@@ -15,7 +17,9 @@ class Main extends Dashboard
     public function cards()
     {
         return [
-            new Help,
+            new NewUsers,
+            new NewJobs,
+            new NewInternships,
         ];
     }
 }

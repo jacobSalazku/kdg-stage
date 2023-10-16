@@ -10,6 +10,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -32,5 +33,19 @@
                 {{ $slot }}
             </main>
         </div>
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+        <script>
+            var quill = new Quill('#editor', {
+                theme: 'snow'
+            });
+
+            quill.on('text-change', function() {
+                document.querySelector('#hidden_description').value = quill.root.innerHTML;
+            });
+
+            $('form').submit(function () {
+                document.querySelector('#hidden_description').value = quill.root.innerHTML;
+            });
+        </script>
     </body>
 </html>

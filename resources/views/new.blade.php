@@ -16,7 +16,8 @@
                         <!-- Description -->
                         <div class="mt-4">
                             <x-input-label for="description" :value="__('Description')" />
-                            <x-text-textarea id="description" class="block mt-1 w-full" type="text" name="description" :value="old('description')" required autofocus autocomplete="description" />
+                            <div id="editor" style="height: 300px;">{!! old('description') ?: '<p><br></p>' !!}</div>
+                            <input type="hidden" name="description" id="hidden_description" value="">
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
                         </div>
 

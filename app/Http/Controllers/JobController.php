@@ -50,7 +50,7 @@ class JobController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'min:305','string'],
+            'description' => ['required', 'min:305', 'max:65535','string'],
             'company' => ['required', 'string', 'max:255'],
             'website' => ['required', 'url:https', 'max:255'],
             'phone_number' => ['required', 'string', 'max:255'],

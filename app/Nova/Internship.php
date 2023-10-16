@@ -4,6 +4,10 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Email;
+use Laravel\Nova\Fields\URL;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Internship extends Resource
@@ -41,6 +45,11 @@ class Internship extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('Company'),
+            Boolean::make('Published'),
+            Email::make('Email')->hideFromIndex(),
+            Text::make('Phone Number')->hideFromIndex(),
+            URL::make('Website')->displayUsing(fn() => "{$this->company}'s website")->hideFromIndex()
         ];
     }
 

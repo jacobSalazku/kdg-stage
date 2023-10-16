@@ -2,11 +2,11 @@
 
 namespace App\Nova\Metrics;
 
-use App\Models\Job;
+use App\Models\Internship;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Value;
 
-class NewJobs extends Value
+class Internships extends Value
 {
     /**
      * Calculate the value of the metric.
@@ -16,7 +16,7 @@ class NewJobs extends Value
      */
     public function calculate(NovaRequest $request)
     {
-        return $this->count($request, Job::class);
+        return $this->count($request, Internship::class);
     }
 
     /**
@@ -45,6 +45,6 @@ class NewJobs extends Value
      */
     public function uriKey()
     {
-        return 'new-jobs';
+        return 'internships';
     }
 }

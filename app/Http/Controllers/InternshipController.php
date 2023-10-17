@@ -14,13 +14,24 @@ class InternshipController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $companies = Internship::where('published', 1)->get();
+        $filter = $request->filter;
+
+        if ($filter == null) {
+            $companies = Internship::where('published', 1)->get();
+        } elseif ($filter !== null) {
+            $companies = Internship::whereHas('tags', function ($query) use ($filter) {
+                $query->where('name', '=', $filter);
+            })->get();
+        }
+
+
+        $tags = Tag::all();
 
         return view('internships', [
             'companies' => $companies,
-            'filtered' => 0
+            'tags' => $tags
         ]);
     }
 

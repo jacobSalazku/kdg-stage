@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Tag extends Resource
@@ -43,8 +44,19 @@ class Tag extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('name'),
-            Text::make('color')
+            Text::make('name')->rules('required', 'max:255', 'unique:tags,name,{{resourceId}}'),
+            Select::make('color')->options([
+                'gray' => 'gray',
+                'red' => 'red',
+                'orange' => 'orange',
+                'yellow' => 'yellow',
+                'green' => 'green',
+                'teal' => 'teal',
+                'blue' => 'blue',
+                'indigo' => 'indigo',
+                'purple' => 'purple',
+                'pink' => 'pink',
+            ])->rules('required', 'max:255', 'unique:tags,color,{{resourceId}}'),
         ];
     }
 

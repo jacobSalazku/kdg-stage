@@ -61,17 +61,6 @@ GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 ```
 
-```env
-MAIL_MAILER=smtp
-MAIL_HOST=
-MAIL_PORT=
-MAIL_USERNAME=
-MAIL_PASSWORD=
-MAIL_ENCRYPTION=
-MAIL_FROM_ADDRESS=
-MAIL_FROM_NAME="${APP_NAME}"
-```
-
 4. Database + tables aanmaken: 
 ```bash
 php artisan migrate
@@ -82,6 +71,8 @@ php artisan migrate
 npm install
 npm run build
 ```
+
+6. ❗️Mailpit is vereist om verificatiemails te versturen: **[Mailpit](https://github.com/axllent/mailpit)**
 
 ## ☎️ Contact
 [Sam Serrien](https://github.com/sam-kdg)

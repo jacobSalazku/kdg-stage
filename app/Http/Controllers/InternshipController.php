@@ -53,11 +53,8 @@ class InternshipController extends Controller
         }
 
         $selectedSkills = $request->input('skills', []);
-
-        foreach ($selectedSkills as $skill){
-            $tag = Tag::where('name', $skill)->first();
-            $internship->tags()->attach($tag->id);
-        }
+        $tagIds = Tag::whereIn('name', $selectedSkills)->pluck('id');
+        $internship->tags()->sync($tagIds);
 
         return redirect('dashboard');
     }

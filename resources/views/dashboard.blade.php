@@ -57,7 +57,7 @@
                                     <x-input-label :value="__('Skills')" />
                                     @foreach($tags as $tag)
                                         <div class="flex items-center">
-                                            <x-checkbox id="{{$tag->name}}" class="mt-1" name="skills[]" value="{{$tag->name}}"/>
+                                            <x-checkbox id="{{$tag->name}}" class="mt-1" name="skills[]" value="{{$tag->name}}" :checked="$internship ? $internship->tags->contains('name', $tag->name) : false" />
                                             <x-input-label class="ml-1" for="{{$tag->name}}">{{$tag->name}}</x-input-label>
                                         </div>
                                     @endforeach

@@ -44,6 +44,7 @@ class Tag extends Resource
         return [
             ID::make()->sortable(),
             Text::make('name'),
+            Text::make('color')
         ];
     }
 

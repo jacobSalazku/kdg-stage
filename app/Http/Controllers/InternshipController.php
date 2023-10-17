@@ -56,11 +56,7 @@ class InternshipController extends Controller
 
         foreach ($selectedSkills as $skill){
             $tag = Tag::where('name', $skill)->first();
-            DB::table('tag_internship')->insert([
-                'internship_id' => $internship->id,
-                'tag_id' => $tag->id,
-            ]);
-
+            $internship->tags()->attach($tag->id);
         }
 
         return redirect('dashboard');

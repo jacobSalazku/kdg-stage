@@ -27,9 +27,11 @@
                             <form method="POST" action="{{route('create_internship')}}">
                                 @csrf
                                 <div class="mt-4">
-                                    <x-input-label for="published" :value="__('Offer internships:')" />
-                                    <x-checkbox id="published" class="block mt-1 w-1/2" name="published" :checked="($internship->published ?? 0) == 1"/>
-                                    <x-input-error :messages="$errors->get('title')" class="mt-2" />
+                                    <div class="flex items center">
+                                        <x-checkbox id="published" class="w-1/2" name="published" :checked="($internship->published ?? 0) == 1"/>
+                                        <x-input-label for="published" class="ml-1" :value="__('Offer internships')" />
+                                        <x-input-error :messages="$errors->get('title')" class="mt-2" />
+                                    </div>
                                 </div>
                                 <div class="mt-4">
                                     <x-input-label for="company" :value="__('Company')" />

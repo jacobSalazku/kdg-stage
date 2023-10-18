@@ -208,8 +208,7 @@ return [
     | Custom Login route
     |--------------------------------------------------------------------------
     |
-    | This configuration option allows you to specify a custom route for the
-    | nova login form.
+    | This configuration option allows you to specify custom routes
     |
     */
     'routes' => [

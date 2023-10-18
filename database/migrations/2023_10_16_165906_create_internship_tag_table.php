@@ -13,9 +13,19 @@ return new class extends Migration
     {
         Schema::create('internship_tag', function (Blueprint $table) {
             $table->id();
-            $table->integer('tag_id');
-            $table->integer('internship_id');
+            $table->unsignedBigInteger('tag_id');
+            $table->unsignedBigInteger('internship_id');
             $table->timestamps();
+
+            $table->foreign('tag_id')
+                ->references('id')
+                ->on('tags')
+                ->onDelete('cascade');
+
+            $table->foreign('internship_id')
+                ->references('id')
+                ->on('internships')
+                ->onDelete('cascade');
         });
     }
 

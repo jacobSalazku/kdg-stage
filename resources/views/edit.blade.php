@@ -17,7 +17,7 @@
                         <div class="mt-4">
                             <x-input-label for="description" :value="__('Description')" />
                             <div id="editor" style="height: 300px;">{!! $job->description !!}</div>
-                            <input type="hidden" name="description" id="hidden_description" value="">
+                            <input type="hidden" name="description" id="hidden_description" value="{{ $job->description }}">
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
                         </div>
 

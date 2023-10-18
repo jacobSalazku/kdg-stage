@@ -128,6 +128,10 @@ class JobController extends Controller
 
         $job = Job::find($request->id);
 
+        if ($job->user_id !== Auth::id()){
+            return redirect('dashboard');
+        }
+
         $job->title = $request->title;
         $job->description = $request->description;
         $job->company = $request->company;

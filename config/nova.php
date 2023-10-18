@@ -203,4 +203,17 @@ return [
         'stopped' => '/',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Login route
+    |--------------------------------------------------------------------------
+    |
+    | This configuration option allows you to specify a custom route for the
+    | nova login form.
+    |
+    */
+    'routes' => [
+        'login' => '/login',
+    ],
+
 ];

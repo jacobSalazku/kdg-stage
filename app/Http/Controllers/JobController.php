@@ -154,7 +154,7 @@ class JobController extends Controller
         $job = Job::find($id);
 
         if ($job->user_id !== Auth::user()->id){
-            return redirect('home');
+            return redirect('dashboard');
         }
 
         $job->delete();

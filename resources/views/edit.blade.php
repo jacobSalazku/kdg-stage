@@ -48,8 +48,6 @@
                             <x-text-input id="email" class="block mt-1 w-full" type="text" name="email" :value="$job->email" required autofocus autocomplete="email" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
-
-                        <input type="hidden" value="{{$job->id}}">
                     </form>
                     <div class="flex items-center justify-end mt-4">
                         <x-primary-button form="edit" class="ml-3">

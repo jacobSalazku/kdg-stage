@@ -64,6 +64,8 @@ class User extends Resource
 
             Text::make('Company'),
 
+            Text::make('Role'),
+
             DateTime::make('Email Verified At'),
 
             Password::make('Password')

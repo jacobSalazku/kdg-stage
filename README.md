@@ -72,7 +72,9 @@ npm install
 npm run build
 ```
 
-6. ❗️Mailpit is vereist om verificatiemails te versturen: **[Mailpit](https://github.com/axllent/mailpit)**
+6. ❗️Wanneer de app environment (.env) in production staat, moet een user admin role hebben om toegang te krijgen tot
+    Nova. Gebruik een databasetool om manueel de role aan een user te geven. Daarna kunnen extra admin roles toegewezen
+    worden via Nova.
 
 ## ☎️ Contact
 [Sam Serrien](https://github.com/sam-kdg)

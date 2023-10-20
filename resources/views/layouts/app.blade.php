@@ -43,12 +43,16 @@
                 ['clean']
             ];
 
+            var initialContent = {!! isset($job) ? json_encode(old('description', $job->description)) : json_encode(old('description')) !!};
+
             var quill = new Quill('#editor', {
                 modules: {
                     toolbar: toolbarOptions
                 },
                 theme: 'snow'
             });
+
+            quill.clipboard.dangerouslyPasteHTML(initialContent);
 
             quill.on('text-change', function() {
                 document.querySelector('#hidden_description').value = quill.root.innerHTML;

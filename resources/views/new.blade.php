@@ -16,8 +16,8 @@
                         <!-- Description -->
                         <div class="mt-4">
                             <x-input-label for="description" :value="__('Description')" />
-                            <div id="editor" style="height: 300px;">{!! old('description') ?: '<p><br></p>' !!}</div>
-                            <input type="hidden" name="description" id="hidden_description" value="">
+                            <div id="editor" style="height: 300px;"></div>
+                            <input type="hidden" name="description" id="hidden_description" value="{{ old('description') }}">
                             <x-input-error :messages="$errors->get('description')" class="mt-2" />
                         </div>
 

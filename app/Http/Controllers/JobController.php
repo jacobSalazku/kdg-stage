@@ -56,7 +56,7 @@ class JobController extends Controller
             'description' => ['required', 'min:305', 'max:65535','string'],
             'company' => ['required', 'string', 'max:255'],
             'website' => ['required', 'url:https', 'max:255'],
-            'phone_number' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'numeric', 'digits_between:9,10'],
             'email' => ['required', 'email', 'max:255'],
 
         ]);
@@ -122,7 +122,7 @@ class JobController extends Controller
             'description' => ['required', 'min:305','string'],
             'company' => ['required', 'string', 'max:255'],
             'website' => ['required', 'url:https', 'max:255'],
-            'phone_number' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'numeric', 'digits_between:9,10'],
             'email' => ['required', 'email', 'max:255'],
         ]);
 

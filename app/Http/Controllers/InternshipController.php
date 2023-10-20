@@ -19,9 +19,9 @@ class InternshipController extends Controller
         $filter = $request->filter;
 
         if ($filter == null) {
-            $companies = Internship::where('published', 1)->get();
+            $companies = Internship::where('published', 1)->where('offer', 1)->get();
         } elseif ($filter !== null) {
-            $companies = Internship::whereHas('tags', function ($query) use ($filter) {
+            $companies = Internship::where('published', 1)->whereHas('tags', function ($query) use ($filter) {
                 $query->where('name', '=', $filter);
             })->get();
         }
@@ -55,11 +55,11 @@ class InternshipController extends Controller
         $internship->phone_number = $request->phone_number;
         $internship->website = $request->website;
 
-        if ($request->published === 'on'){
-            $internship->published = 1;
+        if ($request->offer === 'on'){
+            $internship->offer = 1;
             $internship->save();
         }else{
-            $internship->published = 0;
+            $internship->offer = 0;
             $internship->save();
         }
 

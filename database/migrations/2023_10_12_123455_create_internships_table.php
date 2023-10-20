@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone_number');
             $table->string('website');
+            $table->boolean('offer')->default(0);
             $table->boolean('published')->default(0);
             $table->timestamps();
 

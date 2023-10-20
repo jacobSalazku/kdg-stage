@@ -21,16 +21,17 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-4">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h5 class="text-xl font-semibold leading-none text-gray-800 dark:text-gray-200">Internships</h5>
-                    <p class="mt-4 font-light text-xs text-gray-700 dark:text-gray-400">Want to offer internships? Toggle the option below! This will show your company in the internships list. Fill in the contact information for the internship</p>
+                    <p class="mt-4 font-light text-xs text-gray-700 dark:text-gray-400">Want to offer internships? Toggle the option below! This will show your company in the internships list. Fill in the contact information for the internship.</p>
+                    <p class="mt-4 font-light text-xs text-red-700 dark:text-red-400">Your internship will be reviewed by us, before it becomes public.</p>
                         <div class="mt-4 block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{Auth::user()->company}}</h5>
                             <form method="POST" action="{{route('create_internship')}}">
                                 @csrf
                                 <div class="mt-4">
                                     <div class="flex items center">
-                                        <x-checkbox id="published" name="published" :checked="($internship->published ?? 0) == 1"/>
-                                        <x-input-label for="published" class="ml-1" :value="__('Offer internships')" />
-                                        <x-input-error :messages="$errors->get('title')" class="mt-2" />
+                                        <x-checkbox id="offer" name="offer" :checked="($internship->offer ?? 0) == 1"/>
+                                        <x-input-label for="offer" class="ml-1" :value="__('Offer internships')" />
+                                        <x-input-error :messages="$errors->get('offer')" class="mt-2" />
                                     </div>
                                 </div>
                                 <div class="mt-4">

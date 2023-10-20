@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\DateTime;
@@ -45,14 +46,15 @@ class Job extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('User')->displayUsing(fn() => "{$this->user->name}"),
-            Text::make('Title'),
+            Text::make('User')->displayUsing(fn() => "{$this->user->name}")->hideWhenUpdating(),
+            Text::make('Title')->hideWhenUpdating(),
             Text::make('Company'),
+            Boolean::make('Published'),
             Email::make('Email')->showOnDetail(),
             Text::make('Phone Number')->hideFromIndex(),
             Text::make('Website')->hideFromIndex(),
             Textarea::make('Description')->hideFromIndex(),
-            DateTime::make('Created At'),
+            DateTime::make('Created At')->hideFromIndex(),
         ];
     }
 

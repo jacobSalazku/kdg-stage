@@ -29,7 +29,7 @@ class JobController extends Controller
                     'tags' => $tags
                 ]);
             case 'jobs':
-                $jobs = Job::orderBy('created_at', 'desc')->paginate(4);
+                $jobs = Job::where('published', 1)->orderBy('created_at', 'desc')->paginate(4);
 
                 return view('jobs', [
                     'jobs' => $jobs,
@@ -37,9 +37,9 @@ class JobController extends Controller
                 ]);
 
             case 'search':
-                $jobs = Job::where('title', 'like', '%'. $request->input('query') . '%')->paginate(3);
+                $jobs = Job::where('published', 1)->where('title', 'like', '%'. $request->input('query') . '%')->paginate(3);
 
-                return view('welcome', [
+                return view('jobs', [
                     'jobs' => $jobs,
                     'filtered' => 1
                 ]);

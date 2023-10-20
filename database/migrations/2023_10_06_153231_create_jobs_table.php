@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('company');
             $table->string('phone_number');
             $table->string('email');
+            $table->boolean('published')->default(0);
             $table->timestamps();
             $table->softDeletes();
 

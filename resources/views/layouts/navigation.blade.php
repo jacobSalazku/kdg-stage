@@ -12,19 +12,19 @@
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex content-self-end ">
                         <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                            {{ __('Internships') }}
+                        {{ __('nav.internships') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('jobs')" :active="request()->routeIs('jobs')">
-                            {{ __('Jobs') }}
+                        {{ __('nav.jobs') }}
                         </x-nav-link>
                     </div>
                     @auth
                         <div class=" flex-row justify-center bg-kdg-blue text-kdg-white py-3 my-8 rounded px-6 hover:bg-kdg-dark-blue">
                             <a 
                             href="{{ route('new') }}" :active="request()->routeIs('new')">
-                                 + {{ __('New Job') }}
+                                 +  {{ __('nav.new') }}
                             </a>
                         </div>
                         <div class="">
@@ -33,6 +33,11 @@
                             </x-nav-link>
                         </div>
                     @endauth
+                    <div class="">
+                        <x-nav-link href="{{__('nav.link')}}">
+                            {{ __('nav.language') }}
+                        </x-nav-link>
+                    </div>
                 
                 
                     

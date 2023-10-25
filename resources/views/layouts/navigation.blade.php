@@ -33,6 +33,11 @@
                         </x-nav-link>
                     </div>
                 @endauth
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{__('nav.link')}}">
+                        {{ __('nav.language') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Conditional Dropdown or Login Link -->

@@ -5,7 +5,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Navigation Language Lines
+    | Login Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are used for the login page

@@ -3,7 +3,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h5 class="text-xl font-semibold leading-none text-gray-800 dark:text-gray-200">Your Job Openings</h5>
+                    <h5 class="text-xl font-semibold leading-none text-gray-800 dark:text-gray-200">{{__('dashboard.jobs')}}</h5>
                     @foreach($jobs as $job)
                         <a href="{{route('edit', ['id' => $job->id])}}" class="mt-4 block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$job->title}} - {{$job->company}}</h5>
@@ -20,8 +20,8 @@
             </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-4">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h5 class="text-xl font-semibold leading-none text-gray-800 dark:text-gray-200">Internships</h5>
-                    <p class="mt-4 font-light text-xs text-gray-700 dark:text-gray-400">Want to offer internships? Toggle the option below! This will show your company in the internships list. Fill in the contact information for the internship.</p>
+                    <h5 class="text-xl font-semibold leading-none text-gray-800 dark:text-gray-200">{{__('dashboard.internships')}}</h5>
+                    <p class="mt-4 font-light text-xs text-gray-700 dark:text-gray-400">{{__('dashboard.info')}}.</p>
                     <p class="mt-4 font-light text-xs text-red-700 dark:text-red-400">{{__('form.warning_internship')}}</p>
                         <div class="mt-4 block w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{Auth::user()->company}}</h5>

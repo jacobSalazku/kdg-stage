@@ -17,7 +17,7 @@
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                         <x-nav-link :href="route('jobs')" :active="request()->routeIs('jobs')">
-                        {{ __('nav.jobs') }}
+                            {{ __('nav.jobs') }}
                         </x-nav-link>
                     </div>
                     @auth
@@ -29,7 +29,7 @@
                         </div>
                         <div class="">
                             <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                                {{ __('Dashboard') }}
+                                {{ __('nav.dashboard') }}
                             </x-nav-link>
                         </div>
                     @endauth
@@ -39,11 +39,6 @@
                         </x-nav-link>
                     </div>
                 
-                
-                    
-
-
-
                 </div>
             </div>
         </div>

@@ -19,6 +19,6 @@ return [
     'profile' => 'Profiel',
     'login' => 'Inloggen',
     'logout' => 'Uitloggen',
-    'language' => 'English',
+    'language' => 'ENG',
     'link' => '/en/'
 ];

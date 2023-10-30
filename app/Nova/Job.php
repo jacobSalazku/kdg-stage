@@ -46,7 +46,8 @@ class Job extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('User')->displayUsing(fn() => "{$this->user->name}")->hideWhenUpdating(),
+            Text::make('User')->displayUsing(fn() => "{$this->user->name}")->hideWhenUpdating()->hideWhenCreating(),
+            Text::make('User Id')->hideFromIndex(),
             Text::make('Title')->hideWhenUpdating(),
             Text::make('Company'),
             Boolean::make('Published'),

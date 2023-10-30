@@ -45,8 +45,9 @@ class Internship extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make('User Id')->hideFromIndex(),
+            Text::make('User')->displayUsing(fn() => "{$this->user->name}")->hideWhenUpdating()->hideWhenCreating(),
             Boolean::make('Published'),
-            Text::make('User Id'),
             Text::make('Company'),
             Boolean::make('Offer'),
             Email::make('Email')->hideFromIndex(),

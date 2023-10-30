@@ -2,7 +2,7 @@
 
 @php
 $classes = ($active ?? false)
-            ? ' text-kdg-white text-md font-semibold hover:bg-p-black hover:text-kdg-white px-4 py-8'
+            ? ' text-kdg-white text-md font-semibold hover:bg-p-black hover:text-kdg-white px-2 py-8'
             :' transition delay-50 ease-out text-kdg-white hover:bg-p-black hover:text-kdg-white px-4 py-8' ;
 @endphp
 

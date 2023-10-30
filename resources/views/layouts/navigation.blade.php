@@ -1,8 +1,10 @@
-@php
-    $nameParts = explode(' ', Auth::user()->name);
-    $firstName = $nameParts[0][0] ?? ''; // First letter of the first name
-    $lastName = $nameParts[count($nameParts) - 1][0] ?? ''; // First letter of the last name
-@endphp
+@auth
+    @php
+        $nameParts = explode(' ', Auth::user()->name);
+        $firstName = $nameParts[0][0] ?? ''; // First letter of the first name
+        $lastName = $nameParts[count($nameParts) - 1][0] ?? ''; // First letter of the last name
+    @endphp
+@endauth
 <nav x-data="{ open: false }" class="bg-deep-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-row justify-center items-center h-24">
@@ -12,7 +14,7 @@
                         KdG MCT
                     </a>
                 </div>
-                <div class="hidden md:flex md:flex-row md:items-center md:space-x-4 gap-4 ">
+                <div class="hidden lg:flex mlg:flex-row lg:items-center lg:space-x-4 gap-4 ">
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex content-self-end ">
                         <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
@@ -31,11 +33,6 @@
                             href="{{ route('new') }}" :active="request()->routeIs('new')">
                                  +  {{ __('nav.new') }}
                             </a>
-                        </div>
-                        <div class="">
-                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                                {{ __('nav.dashboard') }}
-                            </x-nav-link>
                         </div>
                     @endauth
                     <div class="">
@@ -57,6 +54,9 @@
                             </button>
                         </x-slot>
                         <x-slot name="content">
+                            <x-dropdown-link  :href="route('dashboard')">
+                            {{ __('nav.dashboard') }}
+                            </x-dropdown-link>
                             <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
@@ -79,7 +79,7 @@
                 @endauth
             </div>
                 </div>
-                <div class="mr-2 flex items-center sm:hidden">
+                <div class="mr-2 flex items-center lg:hidden">
                     <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover-text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus-text-gray-400 transition duration-150 ease-in-out">
                         <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                             <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -95,7 +95,7 @@
         </div>
         
     </div>
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden w-full flex flex-col items-center">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden lg:hidden w-full flex flex-col items-center">
                     <div class="pt-2 pb-3 space-y-1">
                         <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                             {{ __('nav.internships') }}
@@ -123,8 +123,6 @@
                         <!-- Responsive Settings Options -->
                         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
                             <div class="px-4">
-                                <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-                                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                             </div>
 
                             <div class="mt-3 space-y-1">

@@ -2,9 +2,9 @@
 <x-guest-layout>
 
 
-    <div class="flex h-full  flex-col justify-start items-center px-6 py-10 lg:px-8 bg-white">
+    <div class="flex h-full  flex-col justify-start items-center px-6 py-10 sm:px-8 bg-white">
             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-            <img src="{{ asset('/img/KdG_H_Closed_Black_sRGB.png') }}" alt="KDG logo"/>
+            <img src="{{ asset('/img/KdG_H_Closed_Black_sRGB.png') }}" alt="KDG logo" width ="300px" height ="400px"/>
 
                 <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
                     Log in op je account

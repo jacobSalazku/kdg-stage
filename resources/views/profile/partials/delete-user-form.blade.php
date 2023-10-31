@@ -42,13 +42,13 @@
             </div>
 
             <div class="mt-6 flex justify-end">
-                <x-secondary-button x-on:click="$dispatch('close')">
+                <button class="" x-on:click="$dispatch('close')">
                     {{ __('form.cancel') }}
-                </x-secondary-button>
+                </button>
 
-                <x-danger-button class="ml-3">
+                <button class="bg-[#FF6961] text-white">
                     {{ __('form.delete_account') }}
-                </x-danger-button>
+                </button>
             </div>
         </form>
     </x-modal>

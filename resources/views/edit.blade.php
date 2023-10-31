@@ -50,9 +50,9 @@
                         </div>
                     </form>
                     <div class="flex items-center justify-end mt-4">
-                        <x-primary-button form="edit" class="ml-3">
+                        <button form="edit" class="flex w-auto justify-center  mt-2 rounded-md bg-deep-black px-4   py-1.5  text-sm font-semibold leading-6 text-white shadow-sm hover:bg-kdg-dark-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                             {{ __('form.update') }}
-                        </x-primary-button>
+                        </button>
                         <form method="POST" action="{{ route('delete', ['id' => $job->id]) }}">
                             @csrf
                             <x-danger-button class="ml-4">

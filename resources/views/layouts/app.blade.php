@@ -36,7 +36,7 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="flex flex-row justify-center">
                 {{ $slot }}
             </main>
         </div>

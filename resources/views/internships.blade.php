@@ -1,10 +1,10 @@
 <x-app-layout>
-    <div class=" w-screen max-w-full h-screen bg-kdg-white flex flex-col justify-center pt-10">
-        <div class="w-screen flex justify-center items-center   ">
+    <div class=" w-screen  h-screen bg-kdg-white flex flex-col justify-center items-center pt-10">
+        <div class="w-screen max-w-7xl flex flex-row items-center   ">
             <div class="h-20 w-[87.5rem] flex flex-row justify-between border-b-2 border-kdg-light items-center px-10">
                     <div class="">
                         <h1 class=" text-2xl font-h1 sm:text-3xl">
-                            Stage Bedrijven
+                        {{__('internships.internships')}}
                         </h1>
                     </div>
 
@@ -47,8 +47,7 @@
                         <div class="p-6 pt-0">
                             <button class= "border w-auto flex justify-center px-4 py-1.5 rounded-lg bg-deep-black text-white text-sm font-semibold leading-6 text-white shadow-sm hover:bg-kdg-dark-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                              aria-label ="Lees meer over {{$company->company}}"   href=" {{ route('detail', ['id' => $company->id]) }}" :active="request()->routeIs('detail')">
-
-                          
+                            
                                 Lees meer over {{$company->company}}
                             </button>   
                         </div>

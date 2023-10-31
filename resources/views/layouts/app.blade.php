@@ -23,7 +23,7 @@
 
     </head>
     <body class="font-sans antialiased bg-kdg-white">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900 bg-white">
             @include('layouts.navigation')
 
             <!-- Page Heading -->

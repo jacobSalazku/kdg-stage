@@ -14,7 +14,7 @@ return [
 
     'jobs' => 'Job openings',
     'posted' => 'Posted:',
-    'find' => 'Find Internships',
+    'find' => 'Find Jobs',
     'search' => 'Search',
     'back' => 'Back',
     'results' => 'Results:'

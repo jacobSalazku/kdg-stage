@@ -10,7 +10,7 @@
         <div class="flex flex-row justify-center items-center h-24">
             <div class="w-full h-24 flex flex-row justify-between items-center px-6">
                 <div class=" flex flex-row items-center  justify-center cursor-pointer">
-                    <a href="{{ route('home') }}" class="font-h1 font text-3xl text-kdg-white">
+                    <a href="{{ route('home') }}" class="font-KDG font text-3xl text-kdg-white">
                         KdG MCT
                     </a>
                 </div>

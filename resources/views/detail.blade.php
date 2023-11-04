@@ -16,7 +16,7 @@
                                 <p>{!! $job->description !!} </p>
                             </div>
                         </div>
-                        <div class=" w-full md:w-auto flex flex-col sm:flex-row justify-center items-center  border rounded-md py-5 my-5     ">
+                        <div class=" w-full  flex flex-col sm:flex-row justify-center items-center   py-5 my-5  px-10 sm:mx-10 ">
 
                             <div class="flex  flex-col justify-center items-center pt-4 gap-4">
                                 <div>
@@ -24,17 +24,17 @@
                                         Contant us
                                     </p>
                                 </div>
-                                <div class="flex flex-col  md:flex-row gap-8 justify-center items-center">
-                                    <div class="flex  flex-row md:flex-col justify-center ">
+                                <div class=" w-full flex flex-col  md:flex-row gap-8 justify-center items-center">
+                                    <div class="flex  flex-col justify-centeritems ">
                                         <p> {{__('detail.phone')}} </p>
                                         <p> {{ $job->phone_number}} </p>
                                     </div>
 
-                                    <div class="flex flex-row sm:flex-col">
+                                    <div class=" w-auto flex flex-col md:justify-center items-center">
                                         <p> {{__('detail.email')}} </p>
                                         <p> {{ $job->email}} </p>
                                     </div>
-                                    <div class="flex  flex-row sm:flex-col">
+                                    <div class="  w-auto flex flex-col md:justify-center items-center">
                                         <p> {{__('detail.website')}} </p>
                                         <p> <a class="text-decoration-line: underline" target="__blank" href="{{$job->website}}">{{$job->website}}</a> </p>
                                     </div>

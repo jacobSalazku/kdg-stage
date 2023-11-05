@@ -47,7 +47,7 @@
                             <div class=" px-6 pb-4">
                                 <div>
                                     <p class="font-bold"> {{__('internships.website')}}</p>
-                                    <p><a href="{{$company->website}}">{{$company->website}}</a></p>
+                                    <p><a href="{{$company->website}}" target="__blank">{{$company->website}}</a></p>
                                 </div>
                                 <div>
                                     <p class="font-bold"> {{__('internships.email')}}</p>

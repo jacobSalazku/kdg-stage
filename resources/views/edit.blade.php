@@ -55,9 +55,9 @@
                         </button>
                         <form method="POST" action="{{ route('delete', ['id' => $job->id]) }}">
                             @csrf
-                            <x-danger-button class="ml-4">
+                            <button class="flex w-auto justify-center  mt-2 rounded-md bg-red-600 px-4  ml-2 py-1.5  text-sm font-semibold leading-6 text-white shadow-sm hover:bg-kdg-dark-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                                 {{ __('form.delete') }}
-                            </x-danger-button>
+                            </button>
                         </form>
                     </div>
                 </div>

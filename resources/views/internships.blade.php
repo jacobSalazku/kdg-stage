@@ -67,6 +67,9 @@
                     @endforeach
                 </div>
             </div>
+            <br>
+            {{$companies->links()}}
+            <br>
         </div>
     </div>
 </x-app-layout>

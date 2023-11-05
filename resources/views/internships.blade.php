@@ -31,7 +31,7 @@
             <div class=" w-full flex flex-row justify-center gap ">
                 <div class=" w-full h-full max-w-[87.5rem] flex flex-col  items-center sm:flex-row flex-wrap sm:justify-center gap-y-8 pt-20">
                     @foreach($companies as $company)
-                        <div class="relative flex flex-col text-gray-700 bg-white shadow-md w-80 rounded-xl border">
+                        <div class="relative flex flex-col text-gray-700 bg-white shadow-md w-80 rounded-xl border mr-4">
                             <div class="relative  bg-white border-2 border-kdg-dark-blue flex flex-col justify-center   items-center h-32 mx-4 -mt-6 overflow-hidden  shadow-lg rounded-xl  shadow-blue-gray-500/40">
                                 <p class="text-bold text-2xl text-p-black">
                                     {{$company->company}}
@@ -47,14 +47,14 @@
                             <div class=" px-6 pb-4">
                                 <div>
                                     <p class="font-bold"> {{__('form.website')}}</p>
-                                    <p>{{$company->website}}</p>
+                                    <p><a href="{{$company->website}}">{{$company->website}}</a></p>
                                 </div>
                                 <div>
                                     <p class="font-bold"> {{__('form.email')}}</p>
-                                    <p>{{$company->email}}</p></div>
+                                    <p><a href="mailto:{{$company->email}}">{{$company->email}}</a></p></div>
                                 <div>
                                     <p class="font-bold">{{__('form.phone')}}</p>
-                                    <p>{{$company->phone_number}}</p>
+                                    <p><a href="tel:{{$company->phone_number}}">{{$company->phone_number}}</a></p>
                                 </div>
                             </div>
                             <!--<div class="p-6 pt-0">

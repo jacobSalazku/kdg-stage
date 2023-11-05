@@ -14,7 +14,8 @@ return [
 
     'posted' => 'Posted:',
     'website' => 'Website:',
-    'contact' => 'Contact:',
+    'contact' => 'Contact us:',
+    'user' => 'Contact:',
     'email' => 'Email:',
     'phone' => 'Phone Number:',
     'return' => 'Return to overview'

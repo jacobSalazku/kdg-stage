@@ -14,7 +14,8 @@ return [
 
     'posted' => 'Geplaatst:',
     'website' => 'Website:',
-    'contact' => 'Contactpersoon:',
+    'contact' => 'Contacteer ons:',
+    'user' => 'Contactpersoon:',
     'email' => 'Email:',
     'phone' => 'Telefoonnumer:',
     'return' => 'Terug naar het overzicht'

@@ -21,13 +21,17 @@
                             <div class="flex  flex-col justify-center items-center pt-4 gap-4">
                                 <div>
                                     <p class="text-lg font-semibold ">
-                                        Contant us
+                                        {{__('detail.contact')}}
                                     </p>
                                 </div>
                                 <div class=" w-full flex flex-col  md:flex-row gap-8 justify-center items-center">
                                     <div class="flex  flex-col justify-centeritems ">
+                                        <p> {{__('detail.user')}} </p>
+                                        <p> {{$job->user->name}} </p>
+                                    </div>
+                                    <div class="flex  flex-col justify-centeritems ">
                                         <p> {{__('detail.phone')}} </p>
-                                        <p> {{ $job->phone_number}} </p>
+                                        <p>  {{ $job->phone_number}} </p>
                                     </div>
 
                                     <div class=" w-auto flex flex-col md:justify-center items-center">
@@ -39,7 +43,7 @@
                                         <p> <a class="text-decoration-line: underline" target="__blank" href="{{$job->website}}">{{$job->website}}</a> </p>
                                     </div>
 
-                                    
+
                                 </div>
                             </div>
                         </div>

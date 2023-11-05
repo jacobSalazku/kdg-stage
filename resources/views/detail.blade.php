@@ -36,7 +36,7 @@
 
                                     <div class=" w-auto flex flex-col md:justify-center items-center">
                                         <p> {{__('detail.email')}} </p>
-                                        <p> {{ $job->email}} </p>
+                                        <p> <a href="mailto:{{ $job->email}}" class="text-decoration-line: underline">{{ $job->email}}</a> </p>
                                     </div>
                                     <div class="  w-auto flex flex-col md:justify-center items-center">
                                         <p> {{__('detail.website')}} </p>

@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="flex  flex-col justify-centeritems ">
                                         <p> {{__('detail.phone')}} </p>
-                                        <p>  {{ $job->phone_number}} </p>
+                                        <p> <a href="Tel:{{ $job->phone_number}}" class="text-decoration-line: underline">{{ $job->phone_number}}</a></p>
                                     </div>
 
                                     <div class=" w-auto flex flex-col md:justify-center items-center">

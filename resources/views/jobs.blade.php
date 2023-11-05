@@ -21,7 +21,7 @@
                                             <a href="{{route('jobs')}}">{{__('jobs.back')}}</a>
                                         </button>
                                     @endif
-                                </from>       
+                                </form>
                             </div>
                         </form>
                     </div>
@@ -40,7 +40,7 @@
                                 <p class="font-normal text-gray-700 dark:text-gray-400">{{ substr(strip_tags($job->description), 0, 250) }} ...</p>
                                 <p class="mt-2 text-sm text-p-black dark:text-gray-400">{{__('jobs.posted')}} {{$job->updated_at->format('d-m-y H:i')}}</p>
                             </div>
-                        </a>                    
+                        </a>
                     @endforeach
                 </div>
             </div>

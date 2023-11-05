@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'microsoft' => 'Inloggen met microsoft',
-    'github' => 'Inloggen met github',
-    'google' => 'Inloggen met google',
+    'microsoft' => 'Inloggen Met Microsoft',
+    'github' => 'Inloggen Met GitHub',
+    'google' => 'Inloggen Met Google',
 ];

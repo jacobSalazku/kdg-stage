@@ -7,7 +7,7 @@
             <img src="{{ asset('/img/KdG_H_Closed_Black_sRGB.png') }}" alt="KDG logo" width ="300px" height ="400px"/>
 
                 <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                    Log in op je account
+                    {{__('login.login')}}
                 </h2>
             </div>
 
@@ -31,7 +31,7 @@
                         <a href="{{ route('oauth.login', [ 'provider' => 'github' ]) }}" class="mx-auto">{{__('login.github')}}</a>
                         </button>
                         <button
-                            type="submit" 
+                            type="submit"
                             title="Microsoft"
                             aria-label="Login met Microsoft"
                             class="flex w-[18rem] justify-center  mt-2 rounded-md bg-deep-black  py-4 px-3  text-kdg-white text-lg font-semibold leading-6 text-white shadow-sm hover:bg-kdg-dark-blue"

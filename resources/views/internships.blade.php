@@ -46,14 +46,14 @@
                             </div>
                             <div class=" px-6 pb-4">
                                 <div>
-                                    <p class="font-bold"> {{__('form.website')}}</p>
+                                    <p class="font-bold"> {{__('internships.website')}}</p>
                                     <p><a href="{{$company->website}}">{{$company->website}}</a></p>
                                 </div>
                                 <div>
-                                    <p class="font-bold"> {{__('form.email')}}</p>
+                                    <p class="font-bold"> {{__('internships.email')}}</p>
                                     <p><a href="mailto:{{$company->email}}">{{$company->email}}</a></p></div>
                                 <div>
-                                    <p class="font-bold">{{__('form.phone')}}</p>
+                                    <p class="font-bold">{{__('internships.phone')}}</p>
                                     <p><a href="tel:{{$company->phone_number}}">{{$company->phone_number}}</a></p>
                                 </div>
                             </div>

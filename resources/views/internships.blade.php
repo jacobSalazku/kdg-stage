@@ -45,27 +45,24 @@
                                 </div>
                             </div>
                             <div class=" px-6 pb-4">
-                                <div> 
+                                <div>
                                     <p class="font-bold"> {{__('form.website')}}</p>
                                     <p>{{$company->website}}</p>
                                 </div>
-                                <div>  
-                                    <p class="font-bold"> {{__('form.email')}}</p> 
+                                <div>
+                                    <p class="font-bold"> {{__('form.email')}}</p>
                                     <p>{{$company->email}}</p></div>
-                                <div>  
+                                <div>
                                     <p class="font-bold">{{__('form.phone')}}</p>
                                     <p>{{$company->phone_number}}</p>
                                 </div>
-                               
-                              
-                                
                             </div>
-                            <div class="p-6 pt-0">
+                            <!--<div class="p-6 pt-0">
                                 <button class= "border w-auto flex justify-center px-4 py-1.5 rounded-lg bg-deep-black text-white text-sm font-semibold leading-6 text-white shadow-sm hover:bg-kdg-dark-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                                 aria-label ="Lees meer over {{$company->company}}"   href=" {{ route('detail', ['id' => $company->id]) }}" :active="request()->routeIs('detail')">
                                     Lees meer over {{$company->company}}
-                                </button>   
-                            </div>
+                                </button>
+                            </div>-->
                         </div>
                     @endforeach
                 </div>

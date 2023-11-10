@@ -1,10 +1,3 @@
-@auth
-    @php
-        $nameParts = explode(' ', Auth::user()->name);
-        $firstName = $nameParts[0][0] ?? ''; // First letter of the first name
-        $lastName = $nameParts[count($nameParts) - 1][0] ?? ''; // First letter of the last name
-    @endphp
-@endauth
 <nav x-data="{ open: false }" class="bg-deep-black">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-row justify-center items-center h-24">
@@ -45,7 +38,7 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                <div>{{ $firstName }}{{ $lastName ? ' '. $lastName : '' }}</div>
+                                <div>{{ Auth::user()->name }}, {{ Auth::user()->company }}</div>
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />

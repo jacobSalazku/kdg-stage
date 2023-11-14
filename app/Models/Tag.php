@@ -10,6 +10,11 @@ class Tag extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'color'
+    ];
+
     public function internships(): BelongsToMany
     {
         return $this->belongsToMany(Internship::class);

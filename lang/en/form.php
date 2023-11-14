@@ -33,5 +33,6 @@ return [
     'warning_job' => 'Your job opening will be reviewed by us, before it becomes public.',
     'warning_internship' => 'Your internship will be reviewed by us, before it becomes public.',
     'enter' => 'Please enter your email to confirm you would like to permanently delete your account.',
-    'sure' => 'Are you sure you want to delete your account?'
+    'sure' => 'Are you sure you want to delete your account?',
+    'skills' => 'Skills'
 ];

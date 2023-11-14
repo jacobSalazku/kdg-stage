@@ -34,4 +34,5 @@ return [
     'warning_internship' => 'Uw stageplek wordt door ons beoordeeld voordat deze openbaar wordt.',
     'enter' => 'Voer alstublieft uw e-mailadres in om te bevestigen dat u uw account permanent wilt verwijderen.',
     'sure' => 'Bent u zeker dat u uw account wilt verwijderen?',
+    'skills' => 'Skills'
 ];

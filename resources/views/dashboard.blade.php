@@ -55,7 +55,7 @@
                                     <x-input-error :messages="$errors->get('website')" class="mt-2" />
                                 </div>
                                 <div class="mt-4">
-                                    <x-input-label :value="__('Skills')" />
+                                    <x-input-label :value="__('form.skills')" />
                                     @foreach($tags as $tag)
                                         <div class="flex items-center">
                                             <x-checkbox id="{{$tag->name}}" name="skills[]" value="{{$tag->name}}" :checked="$internship ? $internship->tags->contains('name', $tag->name) : false" />

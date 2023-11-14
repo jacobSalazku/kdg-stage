@@ -45,6 +45,7 @@ class InternshipController extends Controller
             'website' => ['required', 'url:https', 'max:255'],
             'phone_number' => ['required', 'numeric', 'digits_between:9,10'],
             'email' => ['required', 'email', 'max:255'],
+            'skills' => ['required', 'array']
         ]);
 
 

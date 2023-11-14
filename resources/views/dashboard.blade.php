@@ -62,6 +62,7 @@
                                             <x-input-label class="ml-1" for="{{$tag->name}}">{{$tag->name}}</x-input-label>
                                         </div>
                                     @endforeach
+                                    <x-input-error :messages="$errors->get('skills')" class="mt-2" />
                                 </div>
                                 <div class="flex items-center justify-start mt-4">
                                     <button class="flex w-auto justify-center  mt-2 rounded-md bg-deep-black px-4   py-1.5  text-sm font-semibold leading-6 text-white shadow-sm hover:bg-kdg-dark-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">

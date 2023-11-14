@@ -7,6 +7,7 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Validation\Rules\In;
 
 class InternshipController extends Controller
@@ -56,10 +57,10 @@ class InternshipController extends Controller
         $internship->phone_number = $request->phone_number;
         $internship->website = $request->website;
 
-        if ($request->offer === 'on'){
+        if ($request->offer === 'on') {
             $internship->offer = 1;
             $internship->save();
-        }else{
+        } else {
             $internship->offer = 0;
             $internship->save();
         }
@@ -68,6 +69,6 @@ class InternshipController extends Controller
         $tagIds = Tag::whereIn('name', $selectedSkills)->pluck('id');
         $internship->tags()->sync($tagIds);
 
-        return redirect('dashboard');
+        return redirect('dashboard')->with('message', Lang::get('form.internship-update'));
     }
 }

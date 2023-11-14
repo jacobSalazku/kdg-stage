@@ -34,5 +34,9 @@ return [
     'warning_internship' => 'Your internship will be reviewed by us, before it becomes public.',
     'enter' => 'Please enter your email to confirm you would like to permanently delete your account.',
     'sure' => 'Are you sure you want to delete your account?',
-    'skills' => 'Skills'
+    'skills' => 'Skills',
+    'job-make' => 'Successfully created job opening',
+    'job-update' => 'Successfully updated job opening',
+    'job-delete' => 'Successfully deleted job opening',
+    'internship-update' => 'Successfully updated internship',
 ];

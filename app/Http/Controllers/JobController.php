@@ -7,6 +7,7 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Internship;
+use Illuminate\Support\Facades\Lang;
 
 class JobController extends Controller
 {
@@ -17,7 +18,7 @@ class JobController extends Controller
     {
         $uri = request()->route()->getName();
 
-        switch ($uri){
+        switch ($uri) {
             case 'dashboard':
                 $jobs = Job::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(1);
                 $internship = Internship::where('user_id', Auth::user()->id)->first();
@@ -37,7 +38,7 @@ class JobController extends Controller
                 ]);
 
             case 'search':
-                $jobs = Job::where('published', 1)->where('title', 'like', '%'. $request->input('query') . '%')->paginate(3);
+                $jobs = Job::where('published', 1)->where('title', 'like', '%' . $request->input('query') . '%')->paginate(3);
 
                 return view('jobs', [
                     'jobs' => $jobs,
@@ -53,7 +54,7 @@ class JobController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'min:305', 'max:65535','string'],
+            'description' => ['required', 'min:305', 'max:65535', 'string'],
             'company' => ['required', 'string', 'max:255'],
             'website' => ['required', 'url:https', 'max:255'],
             'phone_number' => ['required', 'numeric', 'digits_between:9,10'],
@@ -73,7 +74,7 @@ class JobController extends Controller
 
         $job->save();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('message', Lang::get('form.job-make'));
     }
 
     /**
@@ -103,7 +104,7 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
-        if ($job->user_id !== Auth::user()->id){
+        if ($job->user_id !== Auth::user()->id) {
             return redirect('home');
         }
 
@@ -119,7 +120,7 @@ class JobController extends Controller
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'min:305','string'],
+            'description' => ['required', 'min:305', 'string'],
             'company' => ['required', 'string', 'max:255'],
             'website' => ['required', 'url:https', 'max:255'],
             'phone_number' => ['required', 'numeric', 'digits_between:9,10'],
@@ -128,7 +129,7 @@ class JobController extends Controller
 
         $job = Job::find($request->id);
 
-        if ($job->user_id !== Auth::id()){
+        if ($job->user_id !== Auth::id()) {
             return redirect('dashboard');
         }
 
@@ -142,7 +143,7 @@ class JobController extends Controller
 
         $job->save();
 
-        return redirect('dashboard');
+        return redirect('dashboard')->with('message', Lang::get('form.job-update'));
 
     }
 
@@ -153,12 +154,12 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
-        if ($job->user_id !== Auth::user()->id){
+        if ($job->user_id !== Auth::user()->id) {
             return redirect('dashboard');
         }
 
         $job->delete();
 
-        return redirect('dashboard');
+        return redirect('dashboard')->with('message', Lang::get('form.job-delete'));
     }
 }

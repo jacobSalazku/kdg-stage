@@ -21,7 +21,7 @@ return [
     'email' => 'Email',
     'save' => 'Save',
     'saved' => 'Saved',
-    'create' => 'create',
+    'create' => 'Create',
     'update' => 'Update',
     'cancel' => 'Cancel',
     'delete' => 'Delete',

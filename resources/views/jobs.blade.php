@@ -1,11 +1,11 @@
 <x-app-layout>
     <div class="w-full  max-w-[87.5rem] h-full bg-kdg-white flex flex-row  items-center justify-center pt-10 px-6 ">
-        <div class="w-[87.5rem] flex justify-center items-center">
+        <div className="  w-[87.5rem] flex justify-center items-center   ">
             <div class="w-full flex flex-row items-center justify-center">
                 <div class=" h-auto sm:h-20  w-full flex  flex-row justify-center  border-b-2 border-kdg-light items-center px-10">
                     <div  class=" w-full flex flex-col gap-4 sm:flex-row sm:justify-between ">
                         <div class>
-                            <h1 class=" text-2xl font-KDG sm:text-3xl  flex-row items-center justify-center">
+                            <h1 class=" text-2xl font-KDG sm:text-3xl  flex-row items-center justify-cente">
                                 {{__('jobs.jobs')}}
                             </h1>
                         </div>
@@ -36,7 +36,7 @@
                         <a href="{{route('detail', ['id' => $job->id])}}">
                             <div class=" h-auto  mt-6 rounded border border-kdg-grey  shadow-lg flex flex-col justify-center items-start px-5 py-10 gap-8 cursor-pointer hover:bg-gray-100 dark:bg-gray-800  dark:hover:bg-gray-70">
                                 <h3 class="mb-1 text-3xl font-bold tracking-tight text-kdg-dark-blue ">{{$job->title}} </h3>
-                                <h4 class="mb-1 text-lg font-medium tracking-tight text-deep-black ">{{$job->company}}</h4>
+                                <h4 class="mb-1 text-lg font-mium tracking-tight text-deep-black ">{{$job->company}}</h4>
                                 <p class="font-normal text-gray-700 dark:text-gray-400">{{ substr(strip_tags($job->description), 0, 250) }} ...</p>
                                 <p class="mt-2 text-sm text-p-black dark:text-gray-400">{{__('jobs.posted')}} {{$job->updated_at->format('d-m-y H:i')}}</p>
                             </div>

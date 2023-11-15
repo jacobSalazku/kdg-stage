@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="w-full">
+                        <div class="w-full flex justify-center">
                             <button class='flex w-auto justify-center   sm:mx-12 md:mx-24 mt-6 rounded-md bg-deep-black px-4   py-1.5   text-sm font-semibold leading-6 text-white shadow-sm hover:bg-kdg-dark-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"'>
                                 <p class="text-l font-semibold "><a href="{{route('jobs')}}">{{__('detail.return')}}</a></p>
                             </button>

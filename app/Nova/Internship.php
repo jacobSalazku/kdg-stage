@@ -56,6 +56,7 @@ class Internship extends Resource
             URL::make('Website')->displayUsing(fn() => "{$this->company}'s website")->hideFromIndex()
         ];
     }
+    public static $canImportResource = false;
 
     /**
      * Get the cards available for the request.

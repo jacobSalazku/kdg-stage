@@ -59,6 +59,7 @@ class Job extends Resource
             DateTime::make('Created At')->hideFromIndex(),
         ];
     }
+    public static $canImportResource = false;
 
     /**
      * Get the cards available for the request.

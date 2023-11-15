@@ -71,6 +71,8 @@ class User extends Resource
         ];
     }
 
+    public static $canImportResource = false;
+
     /**
      * Get the cards available for the request.
      *

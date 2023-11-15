@@ -67,21 +67,21 @@
                             <div class="mt-4">
                                 <x-input-label for="company" :value="__('form.company')"/>
                                 <x-text-input id="company" class="block mt-1 w-full" type="text" name="company"
-                                              :value="$internship->company ?? Auth::user()->company" required autofocus
+                                              :value="$internship->company ?? Auth::user()->company" autofocus
                                               autocomplete="company"/>
                                 <x-input-error :messages="$errors->get('company')" class="mt-2"/>
                             </div>
                             <div class="mt-4">
                                 <x-input-label for="contact" :value="__('form.contact')"/>
                                 <x-text-input id="contact" class="block mt-1 w-full" type="text" name="contact"
-                                              :value="$internship->contact ?? Auth::user()->name" required autofocus
+                                              :value="$internship->contact ?? Auth::user()->name" autofocus
                                               autocomplete="contact"/>
                                 <x-input-error :messages="$errors->get('contact')" class="mt-2"/>
                             </div>
                             <div class="mt-4">
                                 <x-input-label for="email" :value="__('form.email')"/>
                                 <x-text-input id="email" class="block mt-1 w-full" type="text" name="email"
-                                              :value="$internship->email ?? Auth::user()->email" required autofocus
+                                              :value="$internship->email ?? Auth::user()->email" autofocus
                                               autocomplete="Email"/>
                                 <x-input-error :messages="$errors->get('email')" class="mt-2"/>
                             </div>
@@ -89,14 +89,14 @@
                                 <x-input-label for="phone_number" :value="__('form.phone')"/>
                                 <x-text-input id="phone_number" class="block mt-1 w-full" type="text"
                                               :value="$internship->phone_number ?? old('phone_number')"
-                                              name="phone_number" required autofocus autocomplete="Phone Number"/>
+                                              name="phone_number" autofocus autocomplete="Phone Number"/>
                                 <x-input-error :messages="$errors->get('phone_number')" class="mt-2"/>
                             </div>
                             <div class="mt-4">
                                 <x-input-label for="website" :value="__('form.website')"/>
                                 <x-text-input id="website" class="block mt-1 w-full" type="text"
                                               :value="$internship->website ?? 'https://' . old('website')"
-                                              name="website" required autofocus autocomplete="website"/>
+                                              name="website" autofocus autocomplete="website"/>
                                 <x-input-error :messages="$errors->get('website')" class="mt-2"/>
                             </div>
                             <div class="mt-4">

@@ -15,19 +15,19 @@
 
         <div>
             <x-input-label for="name" :value="__('form.name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
             <x-input-label for="email" :value="__('form.email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
+            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
         </div>
 
         <div>
             <x-input-label for="company" :value="__('form.company')" />
-            <x-text-input id="company" name="company" type="text" class="mt-1 block w-full" :value="old('name', $user->company)" required autofocus autocomplete="company" />
+            <x-text-input id="company" name="company" type="text" class="mt-1 block w-full" :value="old('name', $user->company)" autofocus autocomplete="company" />
             <x-input-error class="mt-2" :messages="$errors->get('company')" />
         </div>
 

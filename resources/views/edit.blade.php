@@ -9,7 +9,7 @@
                         <!-- Title -->
                         <div>
                             <x-input-label for="title" :value="__('form.title')" />
-                            <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="$job->title" required autofocus autocomplete="title" />
+                            <x-text-input id="title" class="block mt-1 w-full" type="text" name="title" :value="$job->title" autofocus autocomplete="title" />
                             <x-input-error :messages="$errors->get('title')" class="mt-2" />
                         </div>
 
@@ -24,29 +24,30 @@
                         <!-- Company -->
                         <div class="mt-4">
                             <x-input-label for="company" :value="__('form.company')" />
-                            <x-text-input id="company" class="block mt-1 w-full" type="text" name="company" :value="$job->company" required autofocus autocomplete="company" />
+                            <x-text-input id="company" class="block mt-1 w-full" type="text" name="company" :value="$job->company" autofocus autocomplete="company" />
                             <x-input-error :messages="$errors->get('company')" class="mt-2" />
                         </div>
 
                         <!-- Website -->
                         <div class="mt-4">
                             <x-input-label for="website" :value="__('form.website')" />
-                            <x-text-input id="website" class="block mt-1 w-full" type="text" name="website" :value="$job->website" required autofocus autocomplete="website" />
+                            <x-text-input id="website" class="block mt-1 w-full" type="text" name="website" :value="$job->website" autofocus autocomplete="website" />
                             <x-input-error :messages="$errors->get('website')" class="mt-2" />
                         </div>
 
                         <!-- Phone Number -->
                         <div class="mt-4">
                             <x-input-label for="phone_number" :value="__('form.phone')" />
-                            <x-text-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number" :value="$job->phone_number" required autofocus autocomplete="phone_number" />
+                            <x-text-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number" :value="$job->phone_number" autofocus autocomplete="phone_number" />
                             <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
                         </div>
 
                         <!-- Email -->
                         <div class="mt-4">
                             <x-input-label for="email" :value="__('form.phone')" />
-                            <x-text-input id="email" class="block mt-1 w-full" type="text" name="email" :value="$job->email" required autofocus autocomplete="email" />
+                            <x-text-input id="email" class="block mt-1 w-full" type="text" name="email" :value="$job->email" autofocus autocomplete="email" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        </div>
                         </div>
                     </form>
                     <div class="flex items-center justify-end mt-4">

@@ -27,7 +27,7 @@
                                 <div class=" w-full flex flex-col  md:flex-row gap-8 justify-center items-center">
                                     <div class="flex  flex-col justify-centeritems ">
                                         <p> {{__('detail.user')}} </p>
-                                        <p> {{$job->user->name}} </p>
+                                        <p> {{$job->contact}} </p>
                                     </div>
                                     <div class="flex  flex-col justify-centeritems ">
                                         <p> {{__('detail.phone')}} </p>

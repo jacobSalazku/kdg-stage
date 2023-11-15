@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('website');
             $table->string('company');
+            $table->string('contact');
             $table->string('phone_number');
             $table->string('email');
             $table->boolean('published')->default(0);

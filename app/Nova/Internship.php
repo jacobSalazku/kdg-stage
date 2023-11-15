@@ -50,6 +50,7 @@ class Internship extends Resource
             Boolean::make('Published'),
             Text::make('Company'),
             Boolean::make('Offer'),
+            Text::make('Contact'),
             Email::make('Email')->hideFromIndex(),
             Text::make('Phone Number')->hideFromIndex(),
             URL::make('Website')->displayUsing(fn() => "{$this->company}'s website")->hideFromIndex()

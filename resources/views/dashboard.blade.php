@@ -72,6 +72,13 @@
                                 <x-input-error :messages="$errors->get('company')" class="mt-2"/>
                             </div>
                             <div class="mt-4">
+                                <x-input-label for="contact" :value="__('form.contact')"/>
+                                <x-text-input id="contact" class="block mt-1 w-full" type="text" name="contact"
+                                              :value="$internship->contact ?? Auth::user()->name" required autofocus
+                                              autocomplete="contact"/>
+                                <x-input-error :messages="$errors->get('contact')" class="mt-2"/>
+                            </div>
+                            <div class="mt-4">
                                 <x-input-label for="email" :value="__('form.email')"/>
                                 <x-text-input id="email" class="block mt-1 w-full" type="text" name="email"
                                               :value="$internship->email ?? Auth::user()->email" required autofocus

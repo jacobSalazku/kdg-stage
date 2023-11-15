@@ -14,6 +14,7 @@ return [
     'title' => 'Title',
     'description' => 'Description',
     'company' => 'Company',
+    'contact' => 'Contact',
     'phone' => 'Phone Number',
     'offer' => 'Offer internships',
     'name' => 'Name',

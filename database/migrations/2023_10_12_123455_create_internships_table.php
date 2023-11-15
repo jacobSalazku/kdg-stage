@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('company');
+            $table->string('contact');
             $table->string('email');
             $table->string('phone_number');
             $table->string('website');

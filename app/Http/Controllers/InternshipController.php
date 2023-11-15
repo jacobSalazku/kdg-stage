@@ -44,6 +44,7 @@ class InternshipController extends Controller
         $request->validate([
             'company' => ['required', 'string', 'max:255'],
             'website' => ['required', 'url:https', 'max:255'],
+            'contact' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'numeric', 'digits_between:9,10'],
             'email' => ['required', 'email', 'max:255'],
             'skills' => ['required', 'array']
@@ -54,6 +55,7 @@ class InternshipController extends Controller
         $internship->user_id = Auth::user()->id;
         $internship->company = $request->company;
         $internship->email = $request->email;
+        $internship->contact = $request->contact;
         $internship->phone_number = $request->phone_number;
         $internship->website = $request->website;
 

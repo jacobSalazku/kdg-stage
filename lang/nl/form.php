@@ -14,6 +14,7 @@ return [
     'title' => 'Titel',
     'description' => 'Omschrijving',
     'company' => 'Bedrijf',
+    'contact' => 'Contactpersoon',
     'phone' => 'Telefoonnummer',
     'offer' => 'Stageplekken aanbieden',
     'website' => 'Website URL',

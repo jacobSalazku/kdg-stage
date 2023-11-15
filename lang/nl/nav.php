@@ -20,5 +20,5 @@ return [
     'login' => 'Inloggen',
     'logout' => 'Uitloggen',
     'language' => 'ENG',
-    'link' => 'locale/en'
+    'link' => 'en'
 ];

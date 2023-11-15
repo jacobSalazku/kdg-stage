@@ -22,14 +22,13 @@
 
                     @auth
                         <div class=" flex-row justify-center bg-kdg-blue text-kdg-white py-3 my-8 rounded px-6 hover:bg-kdg-dark-blue">
-                            <a
-                            href="{{ route('new') }}" :active="request()->routeIs('new')">
+                            <a href="{{ route('new') }}" :active="request()->routeIs('new')">
                                  +  {{ __('nav.new') }}
                             </a>
                         </div>
                     @endauth
                     <div class="">
-                        <x-nav-link href="{{__('nav.link')}}">
+                        <x-nav-link href="{{route('locale', [__('nav.link')])}}">
                             {{ __('nav.language') }}
                         </x-nav-link>
                     </div>

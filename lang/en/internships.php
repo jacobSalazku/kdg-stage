@@ -14,6 +14,7 @@ return [
 
     'internships' => 'Internships',
     'email' => 'Email:',
+    'contact' => 'Contact:',
     'phone' => 'Phone Number:',
     'website' => 'Website:',
     'created' => 'Created At:',

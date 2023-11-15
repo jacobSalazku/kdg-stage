@@ -50,6 +50,10 @@
                                     <p><a href="{{$company->website}}" target="__blank">{{$company->website}}</a></p>
                                 </div>
                                 <div>
+                                    <p class="font-bold">{{__('internships.contact')}}</p>
+                                    <p>{{$company->contact}}</p>
+                                </div>
+                                <div>
                                     <p class="font-bold"> {{__('internships.email')}}</p>
                                     <p><a href="mailto:{{$company->email}}">{{$company->email}}</a></p></div>
                                 <div>

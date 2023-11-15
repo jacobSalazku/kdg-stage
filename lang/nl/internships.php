@@ -14,6 +14,7 @@ return [
 
     'internships' => 'Stageplekken',
     'email' => 'Email:',
+    'contact' => 'Contactpersoon:',
     'phone' => 'Telefoonnummer:',
     'website' => 'Website:',
     'created' => 'Aangemaakt:',

@@ -61,12 +61,6 @@
                                     <p><a href="tel:{{$company->phone_number}}">{{$company->phone_number}}</a></p>
                                 </div>
                             </div>
-                            <!--<div class="p-6 pt-0">
-                                <button class= "border w-auto flex justify-center px-4 py-1.5 rounded-lg bg-deep-black text-white text-sm font-semibold leading-6 text-white shadow-sm hover:bg-kdg-dark-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                aria-label ="Lees meer over {{$company->company}}"   href=" {{ route('detail', ['id' => $company->id]) }}" :active="request()->routeIs('detail')">
-                                    Lees meer over {{$company->company}}
-                                </button>
-                            </div>-->
                         </div>
                     @endforeach
                 </div>

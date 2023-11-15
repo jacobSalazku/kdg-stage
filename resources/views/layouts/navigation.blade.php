@@ -21,10 +21,10 @@
                     </div>
 
                     @auth
-                        <div class=" flex-row justify-center bg-kdg-blue text-kdg-white py-3 my-8 rounded px-6 hover:bg-kdg-dark-blue">
-                            <a href="{{ route('new') }}" :active="request()->routeIs('new')">
+                        <div class="flex-row justify-center bg-kdg-blue text-kdg-white py-3 my-8 rounded px-6 hover:bg-kdg-dark-blue">
+                            <x-nav-link href="{{ route('new') }}" :active="request()->routeIs('new')">
                                  +  {{ __('nav.new') }}
-                            </a>
+                            </x-nav-link>
                         </div>
                     @endauth
                     <div class="">

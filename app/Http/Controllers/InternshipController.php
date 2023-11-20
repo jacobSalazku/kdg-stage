@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Internship;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -63,7 +64,11 @@ class InternshipController extends Controller
         $internship->website = $request->website;
 
         if (!$internship->exists) {
-            Notification::route('mail', 'admin@example.com')->notify(new NewInternshipCreated($internship->company, $internship->contact));
+            $admins = User::where('role', 'admin')->get();
+
+            foreach ($admins as $admin) {
+                Notification::route('mail', $admin->email)->notify(new NewInternshipCreated($internship->company, $internship->contact));
+            }
         }
 
         if ($request->offer === 'on') {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Internship;
@@ -79,7 +80,11 @@ class JobController extends Controller
 
         $job->save();
 
-        Notification::route('mail', 'admin@example.com')->notify(new NewJobCreated($job->title, $job->company, $job->contact));
+        $admins = User::where('role', 'admin')->get();
+
+        foreach ($admins as $admin) {
+            Notification::route('mail', $admin->email)->notify(new NewJobCreated($job->title, $job->company, $job->contact));
+        }
 
         return redirect()->route('dashboard')->with('message', Lang::get('form.job-make'));
     }

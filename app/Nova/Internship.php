@@ -38,16 +38,16 @@ class Internship extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function fields(NovaRequest $request)
     {
         return [
-            ID::make()->sortable(),
+            ID::make(),
             Text::make('User Id')->hideFromIndex(),
             Text::make('User')->displayUsing(fn() => "{$this->user->name}")->hideWhenUpdating()->hideWhenCreating(),
-            Boolean::make('Published'),
+            Boolean::make('Published')->sortable(),
             Text::make('Company'),
             Boolean::make('Offer'),
             Text::make('Contact'),
@@ -56,12 +56,13 @@ class Internship extends Resource
             URL::make('Website')->displayUsing(fn() => "{$this->company}'s website")->hideFromIndex()
         ];
     }
+
     public static $canImportResource = false;
 
     /**
      * Get the cards available for the request.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function cards(NovaRequest $request)
@@ -72,7 +73,7 @@ class Internship extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function filters(NovaRequest $request)
@@ -83,7 +84,7 @@ class Internship extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function lenses(NovaRequest $request)
@@ -94,7 +95,7 @@ class Internship extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function actions(NovaRequest $request)

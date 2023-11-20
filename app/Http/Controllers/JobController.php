@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Internship;
 use Illuminate\Support\Facades\Lang;
+use App\Notifications\NewJobCreated;
+use Illuminate\Support\Facades\Notification;
+
 
 class JobController extends Controller
 {
@@ -75,6 +78,8 @@ class JobController extends Controller
         $job->user_id = Auth::user()->id;
 
         $job->save();
+
+        Notification::route('mail', 'admin@example.com')->notify(new NewJobCreated($job->title, $job->company, $job->contact));
 
         return redirect()->route('dashboard')->with('message', Lang::get('form.job-make'));
     }

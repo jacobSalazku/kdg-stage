@@ -41,12 +41,12 @@ class NewJobCreated extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('New Job Created')
+            ->subject('New job Created')
             ->line('A new job has been created and needs review.')
             ->line('Job Title: ' . $this->title)
             ->line('Company: ' . $this->company)
             ->line('Contact: ' . $this->contact)
-            ->action('Review Job', url('/nova/resources/jobs'));
+            ->action('Review jobs', url('/nova/resources/jobs'));
     }
 
     /**

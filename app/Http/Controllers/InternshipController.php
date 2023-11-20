@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Validation\Rules\In;
+use App\Notifications\NewInternshipCreated;
+use Illuminate\Support\Facades\Notification;
 
 class InternshipController extends Controller
 {
@@ -52,12 +54,17 @@ class InternshipController extends Controller
 
 
         $internship = Internship::firstOrNew(['email' => $request->email]);
+
         $internship->user_id = Auth::user()->id;
         $internship->company = $request->company;
         $internship->email = $request->email;
         $internship->contact = $request->contact;
         $internship->phone_number = $request->phone_number;
         $internship->website = $request->website;
+
+        if (!$internship->exists) {
+            Notification::route('mail', 'admin@example.com')->notify(new NewInternshipCreated($internship->company, $internship->contact));
+        }
 
         if ($request->offer === 'on') {
             $internship->offer = 1;

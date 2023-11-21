@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Internship;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use App\Notifications\NewJobCreated;
 use Illuminate\Support\Facades\Notification;
@@ -86,7 +87,9 @@ class JobController extends Controller
             Notification::route('mail', $admin->email)->notify(new NewJobCreated($job->title, $job->company, $job->contact));
         }
 
-        return redirect()->route('dashboard')->with('message', Lang::get('form.job-make'));
+        $lang = Config::get('app.locale');
+
+        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-make'));
     }
 
     /**
@@ -156,14 +159,16 @@ class JobController extends Controller
 
         $job->save();
 
-        return redirect('dashboard')->with('message', Lang::get('form.job-update'));
+        $lang = Config::get('app.locale');
+
+        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-update'));
 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(int $id)
+    public function destroy(Request $request, int $id)
     {
         $job = Job::find($id);
 
@@ -173,6 +178,8 @@ class JobController extends Controller
 
         $job->delete();
 
-        return redirect('dashboard')->with('message', Lang::get('form.job-delete'));
+        $lang = Config::get('app.locale');
+
+        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-delete'));
     }
 }

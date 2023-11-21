@@ -7,6 +7,7 @@ use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Validation\Rules\In;
@@ -83,6 +84,8 @@ class InternshipController extends Controller
         $tagIds = Tag::whereIn('name', $selectedSkills)->pluck('id');
         $internship->tags()->sync($tagIds);
 
-        return redirect('dashboard')->with('message', Lang::get('form.internship-update'));
+        $lang = Config::get('app.locale');
+
+        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.internship-update'));
     }
 }

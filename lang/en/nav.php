@@ -20,5 +20,5 @@ return [
     'login' => 'Log In',
     'logout' => 'Log Out',
     'language' => 'NL',
-    'link' => 'nl'
+    'link' => '/nl/'
 ];

@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/socialite": "^5.9",
         "laravel/tinker": "^2.8",
+        "mcamara/laravel-localization": "^1.8",
         "simonhamp/laravel-nova-csv-import": "^0.7.2",
         "socialiteproviders/github": "^4.1",
         "socialiteproviders/google": "^4.1",

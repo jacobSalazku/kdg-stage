@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Internship;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Lang;
 use App\Notifications\NewJobCreated;
 use Illuminate\Support\Facades\Notification;
@@ -78,6 +79,21 @@ class JobController extends Controller
         $job->phone_number = $request->phone_number;
         $job->email = $request->email;
         $job->user_id = Auth::user()->id;
+
+        $secret = env('TURNSTILE_SECRET_KEY');
+        $token = $request->get('cf-turnstile-response');
+        $ip = $request->ip();
+
+        $data = [
+            'secret' => $secret,
+            'token' => $token,
+            'ip' => $ip,
+        ];
+
+        $response = Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', $data);
+        //TODO complete captcha flow
+        dd($response);
+
 
         $job->save();
 

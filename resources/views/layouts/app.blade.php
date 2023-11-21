@@ -17,12 +17,6 @@
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet"/>
 
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script src="{{asset('js/quill.js')}}"></script>
-
 </head>
 <body class="font-sans antialiased bg-kdg-white">
 <div class="min-h-screen bg-gray-100 dark:bg-gray-900 bg-white">
@@ -42,5 +36,11 @@
         {{ $slot }}
     </main>
 </div>
+<!-- Scripts -->
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script src="{{asset('js/quill.js')}}"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 </html>

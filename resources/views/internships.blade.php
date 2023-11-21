@@ -47,7 +47,7 @@
                             <div class=" px-6 pb-4">
                                 <div>
                                     <p class="font-bold"> {{__('internships.website')}}</p>
-                                    <p><a href="{{$company->website}}" target="__blank">{{$company->website}}</a></p>
+                                    <p><a href="{{$company->website}}" class="text-decoration-line: underline" target="__blank">{{$company->website}}</a></p>
                                 </div>
                                 <div>
                                     <p class="font-bold">{{__('internships.contact')}}</p>
@@ -55,7 +55,7 @@
                                 </div>
                                 <div>
                                     <p class="font-bold"> {{__('internships.email')}}</p>
-                                    <p><a href="mailto:{{$company->email}}">{{$company->email}}</a></p></div>
+                                    <p><a href="mailto:{{$company->email}}" class="text-decoration-line: underline">{{$company->email}}</a></p></div>
                                 <div>
                                     <p class="font-bold">{{__('internships.phone')}}</p>
                                     <p>

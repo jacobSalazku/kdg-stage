@@ -32,7 +32,7 @@
                         <!-- Website -->
                         <div class="mt-4">
                             <x-input-label for="website" :value="__('form.website')" />
-                            <x-text-input id="website" class="block mt-1 w-full" type="text" name="website" :value="'https://' . old('website')" autofocus autocomplete="website" />
+                            <x-text-input id="website" class="block mt-1 w-full" type="text" name="website" :value="old('website') ? old('website') : 'https://'" autofocus autocomplete="website" />
                             <x-input-error :messages="$errors->get('website')" class="mt-2" />
                         </div>
 

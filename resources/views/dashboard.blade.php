@@ -95,7 +95,7 @@
                             <div class="mt-4">
                                 <x-input-label for="website" :value="__('form.website')"/>
                                 <x-text-input id="website" class="block mt-1 w-full" type="text"
-                                              :value="$internship->website ?? 'https://' . old('website')"
+                                              :value="old('website', optional($internship)->website ? $internship->website : 'https://')"
                                               name="website" autofocus autocomplete="website"/>
                                 <x-input-error :messages="$errors->get('website')" class="mt-2"/>
                             </div>

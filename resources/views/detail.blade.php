@@ -31,7 +31,13 @@
                                     </div>
                                     <div class="flex  flex-col justify-centeritems ">
                                         <p> {{__('detail.phone')}} </p>
-                                        <p> <a href="Tel:{{ $job->phone_number}}" class="text-decoration-line: underline">{{ $job->phone_number}}</a></p>
+                                        <p>
+                                            @if($job->phone_number)
+                                                <a href="tel:{{ $job->phone_number }}" class="text-decoration-line: underline">{{ $job->phone_number }}</a>
+                                            @else
+                                                {{ '-' }}
+                                            @endif
+                                        </p>
                                     </div>
 
                                     <div class=" w-auto flex flex-col md:justify-center items-center">

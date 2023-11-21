@@ -58,7 +58,13 @@
                                     <p><a href="mailto:{{$company->email}}">{{$company->email}}</a></p></div>
                                 <div>
                                     <p class="font-bold">{{__('internships.phone')}}</p>
-                                    <p><a href="tel:{{$company->phone_number}}">{{$company->phone_number}}</a></p>
+                                    <p>
+                                        @if($company->phone_number)
+                                            <a href="tel:{{ $company->phone_number }}" class="text-decoration-line: underline">{{ $company->phone_number }}</a>
+                                        @else
+                                            {{ '-' }}
+                                        @endif
+                                    </p>
                                 </div>
                             </div>
                         </div>

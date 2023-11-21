@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('company');
             $table->string('contact');
             $table->string('email');
-            $table->string('phone_number');
+            $table->string('phone_number')->nullable();
             $table->string('website');
             $table->boolean('offer')->default(0);
             $table->boolean('published')->default(0);

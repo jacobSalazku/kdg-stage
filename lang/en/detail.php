@@ -12,6 +12,7 @@ return [
     |
     */
 
+    'detail' => 'Detail',
     'posted' => 'Posted:',
     'website' => 'Website:',
     'contact' => 'Contact us:',

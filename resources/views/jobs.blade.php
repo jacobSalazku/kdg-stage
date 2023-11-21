@@ -1,3 +1,4 @@
+@section('pagetitle', __('jobs.jobs'))
 <x-app-layout>
     <div class="w-full h-full bg-kdg-white flex flex-col justify-center items-center pt-10 px-6">
         <div class="w-screen max-w-7xl flex flex-row items-center">

@@ -20,6 +20,8 @@ return [
     'website' => 'Website (vb. contactformulier)*',
     'email' => 'Email*',
     'name' => 'Naam*',
+    'edit' => 'Aanpassen',
+    'new' => 'Nieuw',
     'save' => 'Opslaan',
     'saved' => 'Opgeslagen',
     'create' => 'Aanmaken',

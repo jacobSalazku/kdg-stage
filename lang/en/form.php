@@ -20,6 +20,8 @@ return [
     'name' => 'Name*',
     'website' => 'Website (e.g contact form)*',
     'email' => 'Email*',
+    'edit' => 'Edit',
+    'new' => 'New',
     'save' => 'Save',
     'saved' => 'Saved',
     'create' => 'Create',

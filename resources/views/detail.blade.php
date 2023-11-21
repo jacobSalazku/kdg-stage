@@ -1,4 +1,5 @@
- <x-app-layout>
+@section('pagetitle', __('detail.detail'))
+<x-app-layout>
     @foreach($jobs as $job)
         <div class="flex flex-col w-full h-full  items-center justify-start py-10 gap-6 bg-white">
             <div class="  max-w-[87.5rem] flex flex-col items-center  justify-start gap-4">

@@ -28,7 +28,7 @@
                         </div>
                     @endauth
                     <div class="">
-                        <x-nav-link href="{{route('locale', [__('nav.link')])}}">
+                        <x-nav-link href="{{__('nav.link')}}">
                             {{ __('nav.language') }}
                         </x-nav-link>
                     </div>

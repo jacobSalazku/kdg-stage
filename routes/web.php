@@ -45,6 +45,4 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/create-internship', [InternshipController::class, 'update'])->name('create_internship');
 });
 
-Route::get('locale/{language}', [LocalizationController::class, 'setLanguage'])->name('locale');
-
 require __DIR__.'/auth.php';

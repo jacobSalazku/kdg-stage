@@ -17,6 +17,6 @@ return [
     'contact' => 'Contacteer ons:',
     'user' => 'Contactpersoon:',
     'email' => 'Email:',
-    'phone' => 'Telefoonnumer:',
+    'phone' => 'Telefoonnummer:',
     'return' => 'Terug naar het overzicht'
 ];

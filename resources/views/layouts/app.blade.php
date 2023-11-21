@@ -7,6 +7,8 @@
 
     <title>{{ config('app.name', 'Laravel') }} | @yield("pagetitle")</title>
 
+    <link rel="icon" href="https://www.kdg.be/themes/custom/culet/images/skins/kdg/favicons/favicon.ico">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>

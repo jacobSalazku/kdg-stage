@@ -173,7 +173,7 @@ class JobController extends Controller
         }
     }
 
-    private function validateAndSaveJob(Request $request, ?Job $job = null)
+    private function validateAndSaveJob(Request $request, ?Job $job = null): object
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],

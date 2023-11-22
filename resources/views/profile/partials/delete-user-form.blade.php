@@ -51,6 +51,9 @@
                     {{ __('form.delete_account') }}
                 </button>
             </div>
+
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAANdPkNFFtvDOaVA"></div>
+
         </form>
     </x-modal>
 </section>

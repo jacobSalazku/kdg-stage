@@ -46,5 +46,8 @@
                 >{{ __('form.saved') }}</p>
             @endif
         </div>
+
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAANdPkNFFtvDOaVA"></div>
+
     </form>
 </section>

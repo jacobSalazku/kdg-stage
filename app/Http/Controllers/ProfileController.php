@@ -6,6 +6,7 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
@@ -32,9 +33,16 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $response = $request->get('cf-turnstile-response');
+        $ip = $request->ip();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        $captcha = $this->checkCaptcha($ip, $response);
+
+        if($captcha){
+            $request->user()->save();
+            return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        }
+        return Redirect::route('profile.edit');
     }
 
     /**
@@ -48,13 +56,43 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
-        Auth::logout();
+        if($request->email === Auth::user()->email){
+            $response = $request->get('cf-turnstile-response');
+            $ip = $request->ip();
 
-        $user->delete();
+            $captcha = $this->checkCaptcha($ip, $response);
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+            if($captcha){
+                Auth::logout();
 
-        return Redirect::to('/');
+                $user->delete();
+
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
+
+                return Redirect::to('/');
+            }
+            return Redirect::to('/profile');
+        }
+        return Redirect::to('/profile');
+    }
+
+    private function checkCaptcha($ip, $response): bool
+    {
+        $data = [
+            'secret' => env('TURNSTILE_SECRET_KEY'),
+            'response' => $response,
+            'ip' => $ip,
+        ];
+
+        $request= Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', $data);
+
+        $responseData = $request->json();
+
+        if(isset($responseData['success']) && $responseData['success'] === true ){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

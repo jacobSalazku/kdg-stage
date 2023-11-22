@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Validation\Rules\In;
 use App\Notifications\NewInternshipCreated;
@@ -64,28 +65,55 @@ class InternshipController extends Controller
         $internship->phone_number = $request->phone_number;
         $internship->website = $request->website;
 
-        if (!$internship->exists) {
-            $admins = User::where('role', 'admin')->get();
+        $response = $request->get('cf-turnstile-response');
+        $ip = $request->ip();
 
-            foreach ($admins as $admin) {
-                Notification::route('mail', $admin->email)->notify(new NewInternshipCreated($internship->company, $internship->contact));
-            }
-        }
-
-        if ($request->offer === 'on') {
-            $internship->offer = 1;
-            $internship->save();
-        } else {
-            $internship->offer = 0;
-            $internship->save();
-        }
-
-        $selectedSkills = $request->input('skills', []);
-        $tagIds = Tag::whereIn('name', $selectedSkills)->pluck('id');
-        $internship->tags()->sync($tagIds);
+        $captcha = $this->checkCaptcha($ip, $response);
 
         $lang = Config::get('app.locale');
 
-        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.internship-update'));
+        if($captcha){
+            if (!$internship->exists) {
+                $admins = User::where('role', 'admin')->get();
+
+                foreach ($admins as $admin) {
+                    Notification::route('mail', $admin->email)->notify(new NewInternshipCreated($internship->company, $internship->contact));
+                }
+            }
+
+            if ($request->offer === 'on') {
+                $internship->offer = 1;
+                $internship->save();
+            } else {
+                $internship->offer = 0;
+                $internship->save();
+            }
+
+            $selectedSkills = $request->input('skills', []);
+            $tagIds = Tag::whereIn('name', $selectedSkills)->pluck('id');
+            $internship->tags()->sync($tagIds);
+
+            return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.internship-update'));
+        }
+        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.internship-update-error'));
+    }
+
+    private function checkCaptcha($ip, $response): bool
+    {
+        $data = [
+            'secret' => env('TURNSTILE_SECRET_KEY'),
+            'response' => $response,
+            'ip' => $ip,
+        ];
+
+        $request= Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', $data);
+
+        $responseData = $request->json();
+
+        if(isset($responseData['success']) && $responseData['success'] === true ){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

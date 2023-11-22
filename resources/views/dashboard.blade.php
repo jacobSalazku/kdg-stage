@@ -117,6 +117,9 @@
                                     {{ __('form.save') }}
                                 </button>
                             </div>
+
+                            <div class="cf-turnstile" data-sitekey="0x4AAAAAAANdPkNFFtvDOaVA"></div>
+
                         </form>
                     </div>
                 </div>

@@ -56,7 +56,9 @@
                             <x-text-input id="email" class="block mt-1 w-full" type="text" name="email" :value="$job->email" autofocus autocomplete="email" />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
-                        </div>
+
+                        <div class="cf-turnstile" data-sitekey="0x4AAAAAAANdPkNFFtvDOaVA"></div>
+                        
                     </form>
                     <div class="flex items-center justify-end mt-4">
                         <button form="edit" class="flex w-auto justify-center  mt-2 rounded-md bg-deep-black px-4   py-1.5  text-sm font-semibold leading-6 text-white shadow-sm hover:bg-kdg-dark-blue focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">

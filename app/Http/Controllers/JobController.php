@@ -81,7 +81,7 @@ class JobController extends Controller
         $job->user_id = Auth::user()->id;
 
         $lang = Config::get('app.locale');
-        
+
         $response = $request->get('cf-turnstile-response');
         $ip = $request->ip();
 
@@ -155,12 +155,19 @@ class JobController extends Controller
         $job->email = $request->email;
         $job->user_id = Auth::user()->id;
 
-        $job->save();
+        $response = $request->get('cf-turnstile-response');
+        $ip = $request->ip();
+
+        $captcha = $this->checkCaptcha($ip, $response);
 
         $lang = Config::get('app.locale');
 
-        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-update'));
+        if($captcha === true){
+            $job->save();
 
+            return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-update'));
+        }
+        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-update-error'));
     }
 
     /**

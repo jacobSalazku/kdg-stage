@@ -81,8 +81,7 @@ class JobController extends Controller
         $job->user_id = Auth::user()->id;
 
         $lang = Config::get('app.locale');
-
-        $secret = env('TURNSTILE_SECRET_KEY');
+        
         $response = $request->get('cf-turnstile-response');
         $ip = $request->ip();
 

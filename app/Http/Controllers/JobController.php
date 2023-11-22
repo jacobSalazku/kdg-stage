@@ -58,27 +58,7 @@ class JobController extends Controller
      */
     public function create(Request $request)
     {
-        $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'min:305', 'max:65535', 'string'],
-            'company' => ['required', 'string', 'max:255'],
-            'contact' => ['required', 'string', 'max:255'],
-            'website' => ['required', 'url:https', 'max:255'],
-            'phone_number' => ['nullable','numeric', 'digits_between:9,10'],
-            'email' => ['required', 'email', 'max:255'],
-
-        ]);
-
-        $job = new Job();
-
-        $job->title = $request->title;
-        $job->description = $request->description;
-        $job->company = $request->company;
-        $job->contact = $request->contact;
-        $job->website = $request->website;
-        $job->phone_number = $request->phone_number;
-        $job->email = $request->email;
-        $job->user_id = Auth::user()->id;
+        $job = $this->validateAndSaveJob($request);
 
         $lang = Config::get('app.locale');
 
@@ -131,29 +111,8 @@ class JobController extends Controller
      */
     public function update(Request $request)
     {
-        $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'min:305', 'string'],
-            'company' => ['required', 'string', 'max:255'],
-            'website' => ['required', 'url:https', 'max:255'],
-            'phone_number' => ['nullable','numeric', 'digits_between:9,10'],
-            'email' => ['required', 'email', 'max:255'],
-        ]);
-
         $job = Job::find($request->id);
-
-        if ($job->user_id !== Auth::id()) {
-            return redirect('dashboard');
-        }
-
-        $job->title = $request->title;
-        $job->description = $request->description;
-        $job->company = $request->company;
-        $job->contact = $request->contact;
-        $job->website = $request->website;
-        $job->phone_number = $request->phone_number;
-        $job->email = $request->email;
-        $job->user_id = Auth::user()->id;
+        $job = $this->validateAndSaveJob($request, $job);
 
         $response = $request->get('cf-turnstile-response');
         $ip = $request->ip();
@@ -212,5 +171,35 @@ class JobController extends Controller
         }else{
             return false;
         }
+    }
+
+    private function validateAndSaveJob(Request $request, ?Job $job = null)
+    {
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'min:305', 'string'],
+            'company' => ['required', 'string', 'max:255'],
+            'website' => ['required', 'url:https', 'max:255'],
+            'phone_number' => ['nullable', 'numeric', 'digits_between:9,10'],
+            'email' => ['required', 'email', 'max:255'],
+        ]);
+
+        if ($job === null) {
+            $job = new Job();
+        } else {
+            if ($job->user_id !== Auth::id()) {
+                return redirect('dashboard');
+            }
+        }
+        $job->title = $request->title;
+        $job->description = $request->description;
+        $job->company = $request->company;
+        $job->contact = $request->contact;
+        $job->website = $request->website;
+        $job->phone_number = $request->phone_number;
+        $job->email = $request->email;
+        $job->user_id = Auth::user()->id;
+
+        return $job;
     }
 }

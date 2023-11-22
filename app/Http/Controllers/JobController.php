@@ -173,7 +173,7 @@ class JobController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(int $id)
+    public function destroy(Request $request, int $id)
     {
         $job = Job::find($id);
 
@@ -181,11 +181,18 @@ class JobController extends Controller
             return redirect('dashboard');
         }
 
-        $job->delete();
+        $response = $request->get('cf-turnstile-response');
+        $ip = $request->ip();
+
+        $captcha = $this->checkCaptcha($ip, $response);
 
         $lang = Config::get('app.locale');
 
-        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-delete'));
+        if($captcha === true){
+            $job->delete();
+            return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-delete'));
+        }
+        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-delete-error'));
     }
 
     public function checkCaptcha($ip, $response): bool

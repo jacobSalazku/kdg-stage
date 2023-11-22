@@ -80,32 +80,35 @@ class JobController extends Controller
         $job->email = $request->email;
         $job->user_id = Auth::user()->id;
 
+        $lang = Config::get('app.locale');
+
         $secret = env('TURNSTILE_SECRET_KEY');
         $token = $request->get('cf-turnstile-response');
         $ip = $request->ip();
 
         $data = [
             'secret' => $secret,
-            'token' => $token,
+            'response' => $token,
             'ip' => $ip,
         ];
 
-        $response = Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', $data);
+        $request= Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', $data);
         //TODO complete captcha flow
-        dd($response);
 
+        $responseData = $request->json();
 
-        $job->save();
+        if(isset($responseData['success']) && $responseData['success'] === true ){
+            $job->save();
 
-        $admins = User::where('role', 'admin')->get();
+            $admins = User::where('role', 'admin')->get();
 
-        foreach ($admins as $admin) {
-            Notification::route('mail', $admin->email)->notify(new NewJobCreated($job->title, $job->company, $job->contact));
+            foreach ($admins as $admin) {
+                Notification::route('mail', $admin->email)->notify(new NewJobCreated($job->title, $job->company, $job->contact));
+            }
+
+            return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-make'));
         }
-
-        $lang = Config::get('app.locale');
-
-        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-make'));
+        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-make-error'));
     }
 
     /**

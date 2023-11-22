@@ -190,7 +190,7 @@ class JobController extends Controller
         return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-delete'));
     }
 
-    public function checkCaptcha($ip, $response)
+    public function checkCaptcha($ip, $response): bool
     {
         $data = [
             'secret' => env('TURNSTILE_SECRET_KEY'),

@@ -83,29 +83,17 @@ class JobController extends Controller
         $lang = Config::get('app.locale');
 
         $secret = env('TURNSTILE_SECRET_KEY');
-        $token = $request->get('cf-turnstile-response');
+        $response = $request->get('cf-turnstile-response');
         $ip = $request->ip();
 
-        $data = [
-            'secret' => $secret,
-            'response' => $token,
-            'ip' => $ip,
-        ];
+        $captcha = $this->checkCaptcha($ip, $response);
 
-        $request= Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', $data);
-        //TODO complete captcha flow
-
-        $responseData = $request->json();
-
-        if(isset($responseData['success']) && $responseData['success'] === true ){
+        if($captcha === true){
             $job->save();
-
             $admins = User::where('role', 'admin')->get();
-
             foreach ($admins as $admin) {
                 Notification::route('mail', $admin->email)->notify(new NewJobCreated($job->title, $job->company, $job->contact));
             }
-
             return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-make'));
         }
         return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-make-error'));
@@ -200,5 +188,24 @@ class JobController extends Controller
         $lang = Config::get('app.locale');
 
         return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-delete'));
+    }
+
+    public function checkCaptcha($ip, $response)
+    {
+        $data = [
+            'secret' => env('TURNSTILE_SECRET_KEY'),
+            'response' => $response,
+            'ip' => $ip,
+        ];
+
+        $request= Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', $data);
+
+        $responseData = $request->json();
+
+        if(isset($responseData['success']) && $responseData['success'] === true ){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

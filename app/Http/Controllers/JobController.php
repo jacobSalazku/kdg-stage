@@ -98,7 +98,8 @@ class JobController extends Controller
         $job = Job::find($id);
 
         if ($job->user_id !== Auth::user()->id) {
-            return redirect('home');
+            $lang = Config::get('app.locale');
+            return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.rights'));
         }
 
         return view('edit', [
@@ -136,16 +137,16 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
+        $lang = Config::get('app.locale');
+
         if ($job->user_id !== Auth::user()->id) {
-            return redirect('dashboard');
+            return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.rights'));
         }
 
         $response = $request->get('cf-turnstile-response');
         $ip = $request->ip();
 
         $captcha = $this->checkCaptcha($ip, $response);
-
-        $lang = Config::get('app.locale');
 
         if ($captcha === true) {
             $job->delete();
@@ -188,7 +189,8 @@ class JobController extends Controller
             $job = new Job();
         } else {
             if ($job->user_id !== Auth::id()) {
-                return redirect('dashboard');
+                $lang = Config::get('app.locale');
+                return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.rights'));
             }
         }
         $job->title = $request->title;

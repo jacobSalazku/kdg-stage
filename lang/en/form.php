@@ -41,6 +41,9 @@ return [
     'job-make' => 'Successfully created job opening',
     'job-update' => 'Successfully updated job opening',
     'job-delete' => 'Successfully deleted job opening',
+    'job-make-error' => 'Something went wrong when creating the job opening. Please try again.',
+    'job-update-error' => 'Something went wrong when updating the job opening. Please try again.',
+    'job-delete-error' => 'Something went wrong when deleting the job opening. Please try again.',
     'internship-update' => 'Successfully updated internship',
     'internship-update-error' => 'Something went wrong when updating the internship. Please try again.',
 ];

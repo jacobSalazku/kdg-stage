@@ -41,6 +41,9 @@ return [
     'job-make' => 'Vacature werd succesvol aangemaakt',
     'job-update' => 'Vacature werd succesvol aangepast',
     'job-delete' => 'Vacature werd succesvol verwijderd',
+    'job-make-error' => 'Er ging iets fout bij het aanmaken van de vacature. Probeer opnieuw.',
+    'job-update-error' => 'Er ging iets fout bij het aanpassen van de vacature. Probeer opnieuw.',
+    'job-delete-error' => 'Er ging iets fout bij het verwijderen van de stageplek. Probeer opnieuw.',
     'internship-update' => 'Stageplek werd succesvol aangepast',
     'internship-update-error' => 'Er ging iets fout bij het aanpassen van de stageplek. Probeer opnieuw.',
 ];

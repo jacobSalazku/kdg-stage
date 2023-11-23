@@ -67,15 +67,15 @@ class JobController extends Controller
 
         $captcha = $this->checkCaptcha($ip, $response);
 
-        if($captcha === true){
+        if ($captcha === true) {
             $job->save();
             $admins = User::where('role', 'admin')->get();
             foreach ($admins as $admin) {
                 Notification::route('mail', $admin->email)->notify(new NewJobCreated($job->title, $job->company, $job->contact));
             }
-            return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-make'));
+            return redirect('/' . $lang . '/dashboard')->with('success', Lang::get('form.job-make'));
         }
-        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-make-error'));
+        return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.job-make-error'));
     }
 
     /**
@@ -121,12 +121,12 @@ class JobController extends Controller
 
         $lang = Config::get('app.locale');
 
-        if($captcha === true){
+        if ($captcha === true) {
             $job->save();
 
-            return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-update'));
+            return redirect('/' . $lang . '/dashboard')->with('success', Lang::get('form.job-update'));
         }
-        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-update-error'));
+        return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.job-update-error'));
     }
 
     /**
@@ -147,11 +147,11 @@ class JobController extends Controller
 
         $lang = Config::get('app.locale');
 
-        if($captcha === true){
+        if ($captcha === true) {
             $job->delete();
-            return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-delete'));
+            return redirect('/' . $lang . '/dashboard')->with('success', Lang::get('form.job-delete'));
         }
-        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.job-delete-error'));
+        return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.job-delete-error'));
     }
 
     private function checkCaptcha($ip, $response): bool
@@ -162,13 +162,13 @@ class JobController extends Controller
             'ip' => $ip,
         ];
 
-        $request= Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', $data);
+        $request = Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', $data);
 
         $responseData = $request->json();
 
-        if(isset($responseData['success']) && $responseData['success'] === true ){
+        if (isset($responseData['success']) && $responseData['success'] === true) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

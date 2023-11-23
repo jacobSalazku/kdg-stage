@@ -42,4 +42,5 @@ return [
     'job-update' => 'Successfully updated job opening',
     'job-delete' => 'Successfully deleted job opening',
     'internship-update' => 'Successfully updated internship',
+    'internship-update-error' => 'Something went wrong when updating the internship. Please try again.',
 ];

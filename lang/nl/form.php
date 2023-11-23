@@ -42,4 +42,5 @@ return [
     'job-update' => 'Vacature werd succesvol aangepast',
     'job-delete' => 'Vacature werd succesvol verwijderd',
     'internship-update' => 'Stageplek werd succesvol aangepast',
+    'internship-update-error' => 'Er ging iets fout bij het aanpassen van de stageplek. Probeer opnieuw.',
 ];

@@ -50,7 +50,7 @@ class InternshipController extends Controller
             'company' => ['required', 'string', 'max:255'],
             'website' => ['required', 'url:https', 'max:255'],
             'contact' => ['required', 'string', 'max:255'],
-            'phone_number' => ['nullable','numeric', 'digits_between:9,10'],
+            'phone_number' => ['nullable', 'numeric', 'digits_between:9,10'],
             'email' => ['required', 'email', 'max:255'],
             'skills' => ['required', 'array']
         ]);
@@ -72,7 +72,7 @@ class InternshipController extends Controller
 
         $lang = Config::get('app.locale');
 
-        if($captcha){
+        if ($captcha) {
             if (!$internship->exists) {
                 $admins = User::where('role', 'admin')->get();
 
@@ -93,9 +93,9 @@ class InternshipController extends Controller
             $tagIds = Tag::whereIn('name', $selectedSkills)->pluck('id');
             $internship->tags()->sync($tagIds);
 
-            return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.internship-update'));
+            return redirect('/' . $lang . '/dashboard')->with('success', Lang::get('form.internship-update'));
         }
-        return redirect('/'.$lang.'/dashboard')->with('message', Lang::get('form.internship-update-error'));
+        return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.internship-update-error'));
     }
 
     private function checkCaptcha($ip, $response): bool
@@ -106,13 +106,13 @@ class InternshipController extends Controller
             'ip' => $ip,
         ];
 
-        $request= Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', $data);
+        $request = Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', $data);
 
         $responseData = $request->json();
 
-        if(isset($responseData['success']) && $responseData['success'] === true ){
+        if (isset($responseData['success']) && $responseData['success'] === true) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

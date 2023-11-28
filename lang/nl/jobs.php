@@ -17,5 +17,6 @@ return [
     'find' => 'Vind vacatures',
     'search' => 'Zoek',
     'back' => 'Terug',
-    'results' => 'Resultaten:'
+    'results' => 'Resultaten:',
+    'no-jobs' => 'Er werden nog geen jobs toegevoegd'
 ];

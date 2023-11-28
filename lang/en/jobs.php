@@ -17,5 +17,6 @@ return [
     'find' => 'Find Jobs',
     'search' => 'Search',
     'back' => 'Back',
-    'results' => 'Results:'
+    'results' => 'Results:',
+    'no-jobs' => 'No jobs added yet'
 ];

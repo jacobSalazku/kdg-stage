@@ -13,13 +13,13 @@ return [
     */
 
     'home' => '/',
-    'jobs' => '/jobs',
-    'detail' => '/detail/{id}',
-    'search' => '/search',
-    'profile' => '/profile',
-    'dashboard' => '/dashboard',
-    'new' => '/new',
-    'edit' => '/edit/{id}',
-    'delete' => '/delete/{id}',
-    'create-internship' => '/create-internship'
+    'jobs' => 'jobs',
+    'detail' => 'detail/{id}',
+    'search' => 'search',
+    'profile' => 'profile',
+    'dashboard' => 'dashboard',
+    'new' => 'new',
+    'edit' => 'edit/{id}',
+    'delete' => 'delete/{id}',
+    'create-internship' => 'create-internship'
 ];

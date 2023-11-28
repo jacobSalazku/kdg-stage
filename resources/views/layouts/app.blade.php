@@ -43,4 +43,9 @@
 <script src="{{asset('js/quill.js')}}"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
+<footer>
+    <div class="flex justify-center gap-1">
+        &copy; {{ now()->year }} <a target="__blank" href="https://github.com/mctantwerp"> Students And More</a>
+    </div>
+</footer>
 </html>

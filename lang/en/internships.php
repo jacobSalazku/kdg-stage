@@ -19,4 +19,5 @@ return [
     'website' => 'Website:',
     'created' => 'Created At:',
     'filter' => 'Clear filter',
+    'no-internships' => 'No internships added yet'
 ];

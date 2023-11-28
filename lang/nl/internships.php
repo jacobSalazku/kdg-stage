@@ -19,4 +19,5 @@ return [
     'website' => 'Website:',
     'created' => 'Aangemaakt:',
     'filter' => 'Filter verwijderen',
+    'no-internships' => 'Er werden nog geen stageplekken toegevoegd'
 ];

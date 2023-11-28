@@ -72,6 +72,11 @@
                     @endforeach
                 </div>
             </div>
+            @if($companies->count() == 0)
+                <div class="h-auto mt-6 rounded border border-kdg-grey shadow-lg flex flex-col justify-center items-center px-5 py-10 gap-8 dark:bg-gray-800 dark:hover:bg-gray-70">
+                    <h4 class="text-lg font-medium tracking-tight text-deep-black ">{{__('internships.no-internships')}}</h4>
+                </div>
+            @endif
             <br>
             {{$companies->links()}}
             <br>

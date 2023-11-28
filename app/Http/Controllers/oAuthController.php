@@ -1,9 +1,10 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class oAuthController extends Controller
 {
@@ -21,7 +22,7 @@ class oAuthController extends Controller
 
         $user = User::firstOrNew(['email' => $providerUser->getEmail()]);
 
-        switch ($provider){
+        switch ($provider) {
             case 'microsoft':
                 $user->provider_id = $providerUser->getId();
                 $user->email = $providerUser->mail;
@@ -46,8 +47,6 @@ class oAuthController extends Controller
                 $user->save();
                 break;
         }
-
-
 
         Auth::login($user, true);
 

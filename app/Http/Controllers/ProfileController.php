@@ -38,10 +38,12 @@ class ProfileController extends Controller
 
         $captcha = $this->checkCaptcha($ip, $response);
 
-        if($captcha){
+        if ($captcha) {
             $request->user()->save();
+
             return Redirect::route('profile.edit')->with('status', 'profile-updated');
         }
+
         return Redirect::route('profile.edit');
     }
 
@@ -56,13 +58,13 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
-        if($request->email === Auth::user()->email){
+        if ($request->email === Auth::user()->email) {
             $response = $request->get('cf-turnstile-response');
             $ip = $request->ip();
 
             $captcha = $this->checkCaptcha($ip, $response);
 
-            if($captcha){
+            if ($captcha) {
                 Auth::logout();
 
                 $user->delete();
@@ -72,8 +74,10 @@ class ProfileController extends Controller
 
                 return Redirect::to('/');
             }
+
             return Redirect::to('/profile');
         }
+
         return Redirect::to('/profile');
     }
 
@@ -85,13 +89,13 @@ class ProfileController extends Controller
             'ip' => $ip,
         ];
 
-        $request= Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', $data);
+        $request = Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', $data);
 
         $responseData = $request->json();
 
-        if(isset($responseData['success']) && $responseData['success'] === true ){
+        if (isset($responseData['success']) && $responseData['success'] === true) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

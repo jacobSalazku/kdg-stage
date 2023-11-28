@@ -5,14 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Internship;
 use App\Models\Tag;
 use App\Models\User;
+use App\Notifications\NewInternshipCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Lang;
-use Illuminate\Validation\Rules\In;
-use App\Notifications\NewInternshipCreated;
 use Illuminate\Support\Facades\Notification;
 
 class InternshipController extends Controller
@@ -32,12 +30,11 @@ class InternshipController extends Controller
             })->paginate(8);
         }
 
-
         $tags = Tag::all();
 
         return view('internships', [
             'companies' => $companies,
-            'tags' => $tags
+            'tags' => $tags,
         ]);
     }
 
@@ -52,9 +49,8 @@ class InternshipController extends Controller
             'contact' => ['required', 'string', 'max:255'],
             'phone_number' => ['nullable', 'numeric', 'digits_between:9,10'],
             'email' => ['required', 'email', 'max:255'],
-            'skills' => ['required', 'array']
+            'skills' => ['required', 'array'],
         ]);
-
 
         $internship = Internship::firstOrNew(['email' => $request->email]);
 
@@ -73,7 +69,7 @@ class InternshipController extends Controller
         $lang = Config::get('app.locale');
 
         if ($captcha) {
-            if (!$internship->exists) {
+            if (! $internship->exists) {
                 $admins = User::where('role', 'admin')->get();
 
                 foreach ($admins as $admin) {
@@ -93,9 +89,10 @@ class InternshipController extends Controller
             $tagIds = Tag::whereIn('name', $selectedSkills)->pluck('id');
             $internship->tags()->sync($tagIds);
 
-            return redirect('/' . $lang . '/dashboard')->with('success', Lang::get('form.internship-update'));
+            return redirect('/'.$lang.'/dashboard')->with('success', Lang::get('form.internship-update'));
         }
-        return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.internship-update-error'));
+
+        return redirect('/'.$lang.'/dashboard')->with('error', Lang::get('form.internship-update-error'));
     }
 
     private function checkCaptcha($ip, $response): bool

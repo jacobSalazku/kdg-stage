@@ -46,5 +46,5 @@ return [
     'job-delete-error' => 'Er ging iets fout bij het verwijderen van de stageplek. Probeer opnieuw.',
     'internship-update' => 'Stageplek werd succesvol aangepast',
     'internship-update-error' => 'Er ging iets fout bij het aanpassen van de stageplek. Probeer opnieuw.',
-    'rights' => 'Je hebt niet genoeg rechten om deze actie uit te voeren'
+    'rights' => 'Je hebt niet genoeg rechten om deze actie uit te voeren',
 ];

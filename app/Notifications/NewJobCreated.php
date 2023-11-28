@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -12,7 +11,9 @@ class NewJobCreated extends Notification
     use Queueable;
 
     protected $title;
+
     protected $company;
+
     protected $contact;
 
     /**
@@ -43,9 +44,9 @@ class NewJobCreated extends Notification
         return (new MailMessage)
             ->subject('New job Created')
             ->line('A new job has been created and needs review.')
-            ->line('Job Title: ' . $this->title)
-            ->line('Company: ' . $this->company)
-            ->line('Contact: ' . $this->contact)
+            ->line('Job Title: '.$this->title)
+            ->line('Company: '.$this->company)
+            ->line('Contact: '.$this->contact)
             ->action('Review jobs', url('/nova/resources/jobs'));
     }
 

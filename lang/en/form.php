@@ -46,5 +46,5 @@ return [
     'job-delete-error' => 'Something went wrong when deleting the job opening. Please try again.',
     'internship-update' => 'Successfully updated internship',
     'internship-update-error' => 'Something went wrong when updating the internship. Please try again.',
-    'rights' => 'You have no rights to perform this action'
+    'rights' => 'You have no rights to perform this action',
 ];

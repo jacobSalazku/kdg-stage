@@ -3,11 +3,11 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Email;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Email;
 use Laravel\Nova\Fields\URL;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Internship extends Resource
@@ -38,7 +38,6 @@ class Internship extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function fields(NovaRequest $request)
@@ -46,14 +45,14 @@ class Internship extends Resource
         return [
             ID::make(),
             Text::make('User Id')->hideFromIndex(),
-            Text::make('User')->displayUsing(fn() => "{$this->user->name}")->hideWhenUpdating()->hideWhenCreating(),
+            Text::make('User')->displayUsing(fn () => "{$this->user->name}")->hideWhenUpdating()->hideWhenCreating(),
             Boolean::make('Published')->sortable(),
             Text::make('Company'),
             Boolean::make('Offer'),
             Text::make('Contact'),
             Email::make('Email')->hideFromIndex(),
             Text::make('Phone Number')->hideFromIndex(),
-            URL::make('Website')->displayUsing(fn() => "{$this->company}'s website")->hideFromIndex()
+            URL::make('Website')->displayUsing(fn () => "{$this->company}'s website")->hideFromIndex(),
         ];
     }
 
@@ -62,7 +61,6 @@ class Internship extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function cards(NovaRequest $request)
@@ -73,7 +71,6 @@ class Internship extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function filters(NovaRequest $request)
@@ -84,7 +81,6 @@ class Internship extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function lenses(NovaRequest $request)
@@ -95,7 +91,6 @@ class Internship extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      * @return array
      */
     public function actions(NovaRequest $request)

@@ -1,6 +1,5 @@
 <?php
 
-
 return [
 
     /*
@@ -19,5 +18,5 @@ return [
     'user' => 'Contact:',
     'email' => 'Email:',
     'phone' => 'Phone Number:',
-    'return' => 'Return to overview'
+    'return' => 'Return to overview',
 ];

@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -12,6 +11,7 @@ class NewInternshipCreated extends Notification
     use Queueable;
 
     protected $company;
+
     protected $contact;
 
     /**
@@ -41,8 +41,8 @@ class NewInternshipCreated extends Notification
         return (new MailMessage)
             ->subject('New internship Created')
             ->line('A new internship has been created and needs review.')
-            ->line('Company: ' . $this->company)
-            ->line('Contact: ' . $this->contact)
+            ->line('Company: '.$this->company)
+            ->line('Contact: '.$this->contact)
             ->action('Review internships', url('/nova/resources/internships'));
     }
 

@@ -1,6 +1,5 @@
 <?php
 
-
 return [
 
     /*
@@ -21,5 +20,5 @@ return [
     'new' => 'nieuw',
     'edit' => 'aanpassen/{id}',
     'delete' => 'verwijderen/{id}',
-    'create-internship' => 'stage-aanmaken'
+    'create-internship' => 'stage-aanmaken',
 ];

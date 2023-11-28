@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Internship;
 use App\Models\Job;
 use App\Models\Tag;
 use App\Models\User;
+use App\Notifications\NewJobCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Internship;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Lang;
-use App\Notifications\NewJobCreated;
 use Illuminate\Support\Facades\Notification;
-
 
 class JobController extends Controller
 {
@@ -33,14 +32,14 @@ class JobController extends Controller
                 return view('dashboard', [
                     'jobs' => $jobs,
                     'internship' => $internship,
-                    'tags' => $tags
+                    'tags' => $tags,
                 ]);
             case 'jobs':
                 $jobs = Job::where('published', 1)->orderBy('created_at', 'desc')->paginate(4);
 
                 return view('jobs', [
                     'jobs' => $jobs,
-                    'filtered' => 0
+                    'filtered' => 0,
                 ]);
 
             case 'search':
@@ -48,7 +47,7 @@ class JobController extends Controller
 
                 return view('jobs', [
                     'jobs' => $jobs,
-                    'filtered' => 1
+                    'filtered' => 1,
                 ]);
         }
     }
@@ -73,8 +72,10 @@ class JobController extends Controller
             foreach ($admins as $admin) {
                 Notification::route('mail', $admin->email)->notify(new NewJobCreated($job->title, $job->company, $job->contact));
             }
+
             return redirect('/' . $lang . '/dashboard')->with('success', Lang::get('form.job-make'));
         }
+
         return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.job-make-error'));
     }
 
@@ -99,6 +100,7 @@ class JobController extends Controller
 
         if ($job->user_id !== Auth::user()->id) {
             $lang = Config::get('app.locale');
+
             return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.rights'));
         }
 
@@ -127,6 +129,7 @@ class JobController extends Controller
 
             return redirect('/' . $lang . '/dashboard')->with('success', Lang::get('form.job-update'));
         }
+
         return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.job-update-error'));
     }
 
@@ -150,8 +153,10 @@ class JobController extends Controller
 
         if ($captcha === true) {
             $job->delete();
+
             return redirect('/' . $lang . '/dashboard')->with('success', Lang::get('form.job-delete'));
         }
+
         return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.job-delete-error'));
     }
 
@@ -174,7 +179,7 @@ class JobController extends Controller
         }
     }
 
-    private function validateAndSaveJob(Request $request, ?Job $job = null): object
+    private function validateAndSaveJob(Request $request, Job $job = null): object
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
@@ -190,6 +195,7 @@ class JobController extends Controller
         } else {
             if ($job->user_id !== Auth::id()) {
                 $lang = Config::get('app.locale');
+
                 return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.rights'));
             }
         }

@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\LocalizationController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\JobController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\oAuthController;
 use App\Http\Controllers\InternshipController;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\oAuthController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -18,8 +17,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::group(['prefix' => LaravelLocalization::setLocale()], function()
-{
+Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get(LaravelLocalization::transRoute('routes.home'), [InternshipController::class, 'index'])->name('home');
     Route::get(LaravelLocalization::transRoute('routes.jobs'), [JobController::class, 'index'])->name('jobs');
     Route::get(LaravelLocalization::transRoute('routes.detail'), [JobController::class, 'show'])->name('detail');
@@ -34,7 +32,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
         Route::delete(LaravelLocalization::transRoute('routes.profile'), [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::get(LaravelLocalization::transRoute('routes.dashboard'), [JobController::class, 'index'])->name('dashboard');
 
-        Route::get(LaravelLocalization::transRoute('routes.new'), function(){
+        Route::get(LaravelLocalization::transRoute('routes.new'), function () {
             return view('new');
         })->name('new');
         Route::post(LaravelLocalization::transRoute('routes.new'), [JobController::class, 'create'])->name('new');

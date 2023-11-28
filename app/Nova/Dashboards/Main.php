@@ -3,8 +3,8 @@
 namespace App\Nova\Dashboards;
 
 use App\Nova\Metrics\Internships;
-use App\Nova\Metrics\Users;
 use App\Nova\Metrics\Jobs;
+use App\Nova\Metrics\Users;
 use Laravel\Nova\Dashboards\Main as Dashboard;
 
 class Main extends Dashboard

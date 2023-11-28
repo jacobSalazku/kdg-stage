@@ -1,6 +1,5 @@
 <?php
 
-
 return [
 
     /*
@@ -18,5 +17,5 @@ return [
     'search' => 'Zoek',
     'back' => 'Terug',
     'results' => 'Resultaten:',
-    'no-jobs' => 'Er werden nog geen jobs toegevoegd'
+    'no-jobs' => 'Er werden nog geen jobs toegevoegd',
 ];

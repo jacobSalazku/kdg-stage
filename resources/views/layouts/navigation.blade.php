@@ -137,6 +137,15 @@
                     </div>
                     @endauth
 
+                    <div class="pt-2 pb-3 space-y-1">
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <x-responsive-nav-link
+                                :href="LaravelLocalization::getLocalizedURL($localeCode, null, [], true)">
+                                {{ $properties['native'] }}
+                            </x-responsive-nav-link>
+                        @endforeach
+                    </div>
+
                     @if(Auth::user())
                         <!-- Responsive Settings Options -->
                         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">

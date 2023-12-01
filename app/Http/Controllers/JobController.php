@@ -43,7 +43,7 @@ class JobController extends Controller
                 ]);
 
             case 'search':
-                $jobs = Job::where('published', 1)->where('title', 'like', '%' . $request->input('query') . '%')->paginate(3);
+                $jobs = Job::where('published', 1)->where('title', 'like', '%' . $request->input('query') . '%')->paginate(4);
 
                 return view('jobs', [
                     'jobs' => $jobs,

@@ -43,7 +43,7 @@ class JobController extends Controller
                 ]);
 
             case 'search':
-                $jobs = Job::where('published', 1)->where('title', 'like', '%' . $request->input('query') . '%')->paginate(4);
+                $jobs = Job::where('published', 1)->where('title', 'like', '%'.$request->input('query').'%')->paginate(4);
 
                 return view('jobs', [
                     'jobs' => $jobs,
@@ -73,10 +73,10 @@ class JobController extends Controller
                 Notification::route('mail', $admin->email)->notify(new NewJobCreated($job->title, $job->company, $job->contact));
             }
 
-            return redirect('/' . $lang . '/dashboard')->with('success', Lang::get('form.job-make'));
+            return redirect('/'.$lang.'/dashboard')->with('success', Lang::get('form.job-make'));
         }
 
-        return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.job-make-error'));
+        return redirect('/'.$lang.'/dashboard')->with('error', Lang::get('form.job-make-error'));
     }
 
     /**
@@ -101,7 +101,7 @@ class JobController extends Controller
         if ($job->user_id !== Auth::user()->id) {
             $lang = Config::get('app.locale');
 
-            return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.rights'));
+            return redirect('/'.$lang.'/dashboard')->with('error', Lang::get('form.rights'));
         }
 
         return view('edit', [
@@ -127,10 +127,10 @@ class JobController extends Controller
         if ($captcha === true) {
             $job->save();
 
-            return redirect('/' . $lang . '/dashboard')->with('success', Lang::get('form.job-update'));
+            return redirect('/'.$lang.'/dashboard')->with('success', Lang::get('form.job-update'));
         }
 
-        return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.job-update-error'));
+        return redirect('/'.$lang.'/dashboard')->with('error', Lang::get('form.job-update-error'));
     }
 
     /**
@@ -143,7 +143,7 @@ class JobController extends Controller
         $lang = Config::get('app.locale');
 
         if ($job->user_id !== Auth::user()->id) {
-            return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.rights'));
+            return redirect('/'.$lang.'/dashboard')->with('error', Lang::get('form.rights'));
         }
 
         $response = $request->get('cf-turnstile-response');
@@ -154,10 +154,10 @@ class JobController extends Controller
         if ($captcha === true) {
             $job->delete();
 
-            return redirect('/' . $lang . '/dashboard')->with('success', Lang::get('form.job-delete'));
+            return redirect('/'.$lang.'/dashboard')->with('success', Lang::get('form.job-delete'));
         }
 
-        return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.job-delete-error'));
+        return redirect('/'.$lang.'/dashboard')->with('error', Lang::get('form.job-delete-error'));
     }
 
     private function checkCaptcha($ip, $response): bool
@@ -196,7 +196,7 @@ class JobController extends Controller
             if ($job->user_id !== Auth::id()) {
                 $lang = Config::get('app.locale');
 
-                return redirect('/' . $lang . '/dashboard')->with('error', Lang::get('form.rights'));
+                return redirect('/'.$lang.'/dashboard')->with('error', Lang::get('form.rights'));
             }
         }
         $job->title = $request->title;

@@ -1,7 +1,7 @@
 @section('pagetitle', __('internships.internships'))
 <x-app-layout>
     <div class="w-full h-full bg-kdg-white flex flex-col justify-center items-center pt-10 px-6">
-        <div class="w-screen max-w-7xl flex flex-row items-center">
+        <div class="w-screen max-w-7xl flex flex-row items-center mb-6">
             <div class="h-20 w-[87.5rem] flex flex-row border-b-2 border-kdg-light items-center px-10">
                 <div>
                     <h1 class="text-2xl font-KDG sm:text-3xl">
@@ -27,9 +27,9 @@
             </div>
         </div>
         <div class="w-full max-w-[87.5rem] flex flex-col items-center justify-center -bg-white dark:bg-gray-800 overflow-hidden mt-4 md:px-10">
-            <div class="w-full p-6 text-gray-900 dark:text-gray-100">
+            <div class="w-full p-6 text-gray-900 dark:text-gray-100 grid grid-cols-3 gap-2 justify-evenly">
                 @foreach($companies as $company)
-                        <div class="h-auto mt-6 rounded border border-kdg-grey shadow-lg flex flex-col justify-center items-start px-5 py-10 dark:bg-gray-800">
+                        <div class="h-auto rounded border border-kdg-grey shadow-lg flex flex-col justify-center items-start px-5 py-10 dark:bg-gray-800">
                             <h3 class="mb-1 text-3xl font-bold tracking-tight text-kdg-dark-blue ">{{$company->company}} </h3>
                             <div class="mt-4 mb-4 text-p-black">
                                 @foreach($company->tags as $tag)
@@ -54,11 +54,13 @@
                 @endforeach
                 <br>
                 @if($companies->count() == 0)
-                    <div class="h-auto mt-6 rounded border border-kdg-grey shadow-lg flex flex-col justify-center items-center px-5 py-10 gap-8 dark:bg-gray-800 dark:hover:bg-gray-70">
-                        <h4 class="text-lg font-medium tracking-tight text-deep-black ">{{__('internships.no-internships')}}</h4>
+                    <div class="h-auto rounded border border-kdg-grey shadow-lg px-5 py-5 text-center">
+                        <h4 class="text-lg font-medium tracking-tight text-deep-black">{{__('internships.no-internships')}}</h4>
                     </div>
                 @endif
-                {{$companies->links()}}
+                    <div class="col-span-3">
+                        {{ $companies->links() }}
+                    </div>
             </div>
         </div>
     </div>

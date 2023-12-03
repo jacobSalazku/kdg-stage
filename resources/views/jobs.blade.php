@@ -37,15 +37,15 @@
                             <p class="mt-2 text-sm text-p-black dark:text-gray-400">{{__('jobs.posted')}} {{$job->updated_at->format('d-m-y H:i')}}</p>
                         </div>
                     </a>
+                    <br>
                 @endforeach
-                <br>
-                @if($jobs->count() == 0)
-                        <div class="h-auto mt-6 rounded border border-kdg-grey shadow-lg flex flex-col justify-center items-center px-5 py-10 gap-8 dark:bg-gray-800 dark:hover:bg-gray-70">
-                            <h4 class="text-lg font-medium tracking-tight text-deep-black ">{{__('jobs.no-jobs')}}</h4>
-                        </div>
-                @endif
                 {{$jobs->links()}}
             </div>
         </div>
+        @if($jobs->count() == 0)
+            <div class="h-auto rounded border border-kdg-grey shadow-lg px-5 py-5 text-center">
+                <h4 class="text-lg font-medium tracking-tight text-deep-black ">{{__('jobs.no-jobs')}}</h4>
+            </div>
+        @endif
     </div>
 </x-app-layout>

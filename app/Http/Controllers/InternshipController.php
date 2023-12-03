@@ -23,7 +23,7 @@ class InternshipController extends Controller
         $filter = $request->filter;
 
         if ($filter == null) {
-            $companies = Internship::where('published', 1)->where('offer', 1)->paginate(4);
+            $companies = Internship::where('published', 1)->where('offer', 1)->paginate(6);
         } elseif ($filter !== null) {
             $companies = Internship::where('published', 1)->whereHas('tags', function ($query) use ($filter) {
                 $query->where('name', '=', $filter);

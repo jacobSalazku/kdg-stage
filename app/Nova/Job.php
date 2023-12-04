@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Email;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
@@ -45,8 +46,6 @@ class Job extends Resource
     {
         return [
             ID::make(),
-            Text::make('User')->displayUsing(fn () => "{$this->user->name}")->hideWhenUpdating()->hideWhenCreating(),
-            Text::make('User Id')->hideFromIndex(),
             Text::make('Title')->hideFromIndex(),
             Text::make('Company'),
             Text::make('Contact'),
@@ -56,6 +55,7 @@ class Job extends Resource
             Text::make('Website')->hideFromIndex(),
             Textarea::make('Description')->hideFromIndex(),
             DateTime::make('Created At')->hideFromIndex(),
+            HasOne::make('User'),
         ];
     }
 

@@ -1,4 +1,4 @@
-<p align="center"><img src="https://emojiisland.com/cdn/shop/products/Business_Shirt_With_Tie_Emoji_large.png?v=1571606066" width="200" alt="Logo"></p>
+<p align="center"><img src="public/img/KdG_H_Closed_Black_sRGB.png" width="200" alt="Logo"></p>
 
 <h1 align="center">Stagebedrijven website</h1>
 
@@ -59,6 +59,8 @@ GITHUB_CLIENT_SECRET=
 
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
+
+TURNSTILE_SECRET_KEY=
 ```
 
 4. Database + tables aanmaken: 

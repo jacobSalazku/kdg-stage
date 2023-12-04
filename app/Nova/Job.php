@@ -55,7 +55,7 @@ class Job extends Resource
             Text::make('Website')->hideFromIndex(),
             Textarea::make('Description')->hideFromIndex(),
             DateTime::make('Created At')->hideFromIndex(),
-            HasOne::make('User'),
+            HasOne::make('User')->hideWhenUpdating(),
         ];
     }
 
@@ -99,5 +99,15 @@ class Job extends Resource
     public function actions(NovaRequest $request)
     {
         return [];
+    }
+
+    public static function authorizedToCreate(Request $request)
+    {
+        return false;
+    }
+
+    public function authorizedToReplicate(Request $request)
+    {
+        return false;
     }
 }

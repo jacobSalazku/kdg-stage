@@ -63,9 +63,9 @@ class User extends Resource
                 'admin' => 'admin',
             ])->rules('required'),
 
-            HasMany::make('Job'),
+            HasMany::make('Job')->hideWhenUpdating(),
 
-            HasOne::make('Internship'),
+            HasOne::make('Internship')->hideWhenUpdating(),
         ];
     }
 
@@ -109,5 +109,20 @@ class User extends Resource
     public function actions(NovaRequest $request)
     {
         return [];
+    }
+
+    public static function authorizedToCreate(Request $request)
+    {
+        return false;
+    }
+
+    public function authorizedToReplicate(Request $request)
+    {
+        return false;
+    }
+
+    public function authorizedToUpdate(Request $request)
+    {
+        return false;
     }
 }

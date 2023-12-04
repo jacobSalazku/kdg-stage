@@ -54,8 +54,8 @@ class Internship extends Resource
             Email::make('Email')->hideFromIndex(),
             Text::make('Phone Number')->hideFromIndex(),
             URL::make('Website')->displayUsing(fn () => "{$this->company}'s website")->hideFromIndex(),
-            HasOne::make('User'),
-            HasMany::make('Tags')
+            HasOne::make('User')->hideWhenUpdating(),
+            HasMany::make('Tags')->hideWhenUpdating()
         ];
     }
 
@@ -99,5 +99,15 @@ class Internship extends Resource
     public function actions(NovaRequest $request)
     {
         return [];
+    }
+
+    public static function authorizedToCreate(Request $request)
+    {
+        return false;
+    }
+
+    public function authorizedToReplicate(Request $request)
+    {
+        return false;
     }
 }

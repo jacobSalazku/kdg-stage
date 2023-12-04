@@ -57,7 +57,7 @@ class JobController extends Controller
      */
     public function create(Request $request)
     {
-        $job = $this->validateAndSaveJob($request);
+        $job = $this->validateJob($request);
 
         $lang = Config::get('app.locale');
 
@@ -115,7 +115,7 @@ class JobController extends Controller
     public function update(Request $request)
     {
         $job = Job::find($request->id);
-        $job = $this->validateAndSaveJob($request, $job);
+        $job = $this->validateJob($request, $job);
 
         $response = $request->get('cf-turnstile-response');
         $ip = $request->ip();
@@ -179,7 +179,7 @@ class JobController extends Controller
         }
     }
 
-    private function validateAndSaveJob(Request $request, Job $job = null): object
+    private function validateJob(Request $request, Job $job = null): object
     {
         $request->validate([
             'title' => ['required', 'string', 'max:255'],

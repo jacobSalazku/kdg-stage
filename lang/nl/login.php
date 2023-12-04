@@ -15,5 +15,5 @@ return [
     'microsoft' => 'Inloggen Met Microsoft',
     'github' => 'Inloggen Met GitHub',
     'google' => 'Inloggen Met Google',
-    'title' => 'Inloggen'
+    'title' => 'Inloggen',
 ];

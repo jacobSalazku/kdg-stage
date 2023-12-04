@@ -21,7 +21,7 @@
                     </div>
 
                     @auth
-                        <div class="flex-row justify-center bg-kdg-blue text-kdg-white py-3 my-8 rounded px-6 hover:bg-kdg-dark-blue">
+                        <div class="flex-row justify-center bg-kdg-blue text-kdg-white py-1.5 rounded hover:bg-kdg-dark-blue">
                             <x-nav-link href="{{ route('new') }}" :active="request()->routeIs('new')">
                                  +  {{ __('nav.new') }}
                             </x-nav-link>

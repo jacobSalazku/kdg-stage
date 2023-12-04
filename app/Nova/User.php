@@ -45,10 +45,6 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            HasMany::make('Job'),
-
-            HasOne::make('Internship'),
-
             Text::make('Name')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -66,6 +62,10 @@ class User extends Resource
                 'user' => 'user',
                 'admin' => 'admin',
             ])->rules('required'),
+
+            HasMany::make('Job'),
+
+            HasOne::make('Internship'),
         ];
     }
 

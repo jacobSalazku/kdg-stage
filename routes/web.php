@@ -17,14 +17,14 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('oauth/login/{provider}', [oAuthController::class, 'redirectToProvider'])->name('oauth.login');
+Route::get('oauth/callback/{provider}', [oAuthController::class, 'handleProviderCallback'])->name('oauth.callback');
+
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get(LaravelLocalization::transRoute('routes.home'), [InternshipController::class, 'index'])->name('home');
     Route::get(LaravelLocalization::transRoute('routes.jobs'), [JobController::class, 'index'])->name('jobs');
     Route::get(LaravelLocalization::transRoute('routes.detail'), [JobController::class, 'show'])->name('detail');
     Route::get(LaravelLocalization::transRoute('routes.search'), [JobController::class, 'index'])->name('search');
-
-    Route::get('oauth/login/{provider}', [oAuthController::class, 'redirectToProvider'])->name('oauth.login');
-    Route::get('oauth/callback/{provider}', [oAuthController::class, 'handleProviderCallback'])->name('oauth.callback');
 
     Route::middleware(['auth'])->group(function () {
         Route::get(LaravelLocalization::transRoute('routes.profile'), [ProfileController::class, 'edit'])->name('profile.edit');

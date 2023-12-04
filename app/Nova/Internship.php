@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Email;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
@@ -45,6 +46,7 @@ class Internship extends Resource
     {
         return [
             ID::make(),
+            Text::make('User Id')->hideFromIndex()->hideWhenUpdating(),
             Boolean::make('Published')->sortable(),
             Text::make('Company'),
             Boolean::make('Offer'),
@@ -53,6 +55,7 @@ class Internship extends Resource
             Text::make('Phone Number')->hideFromIndex(),
             URL::make('Website')->displayUsing(fn () => "{$this->company}'s website")->hideFromIndex(),
             HasOne::make('User'),
+            HasMany::make('tags')
         ];
     }
 

@@ -2,20 +2,22 @@
 
 namespace App\Nova\Metrics;
 
-use App\Models\User;
+use App\Models\Internship;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Metrics\Value;
+use Laravel\Nova\Metrics\Trend;
+use Laravel\Nova\Nova;
 
-class Users extends Value
+class NewInternships extends Trend
 {
     /**
      * Calculate the value of the metric.
      *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return mixed
      */
     public function calculate(NovaRequest $request)
     {
-        return $this->count($request, User::class);
+        return $this->countByDays($request, Internship::class);
     }
 
     /**
@@ -26,14 +28,9 @@ class Users extends Value
     public function ranges()
     {
         return [
-            30 => '30 Days',
-            60 => '60 Days',
-            365 => '365 Days',
-            'TODAY' => 'Today',
-            'YESTERDAY' => 'Yesterday',
-            'MTD' => 'Month To Date',
-            'QTD' => 'Quarter To Date',
-            'YTD' => 'Year To Date',
+            30 => Nova::__('30 Days'),
+            60 => Nova::__('60 Days'),
+            90 => Nova::__('90 Days'),
         ];
     }
 
@@ -44,6 +41,6 @@ class Users extends Value
      */
     public function uriKey()
     {
-        return 'users';
+        return 'new-internships';
     }
 }

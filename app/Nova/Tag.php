@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
@@ -55,6 +56,7 @@ class Tag extends Resource
                 'purple' => 'purple',
                 'pink' => 'pink',
             ])->rules('required', 'max:255', 'unique:tags,color,{{resourceId}}'),
+            HasMany::make('internships'),
         ];
     }
 

@@ -55,7 +55,7 @@ class Internship extends Resource
             Text::make('Phone Number')->hideFromIndex(),
             URL::make('Website')->displayUsing(fn () => "{$this->company}'s website")->hideFromIndex(),
             HasOne::make('User'),
-            HasMany::make('tags')
+            HasMany::make('Tags')
         ];
     }
 

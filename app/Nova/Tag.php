@@ -56,7 +56,7 @@ class Tag extends Resource
                 'purple' => 'purple',
                 'pink' => 'pink',
             ])->rules('required', 'max:255', 'unique:tags,color,{{resourceId}}'),
-            HasMany::make('internships'),
+            HasMany::make('Internships'),
         ];
     }
 

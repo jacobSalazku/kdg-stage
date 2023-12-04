@@ -1,3 +1,4 @@
+@section('pagetitle', __('login.title'))
 <x-app-layout>
     <div class="flex h-full  flex-col justify-start items-center px-6 py-10 sm:px-8 bg-white">
             <div class="sm:mx-auto sm:w-full sm:max-w-sm">

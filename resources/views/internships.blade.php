@@ -53,7 +53,7 @@
                         </div>
                 @endforeach
                 <br>
-                @if($companies->count() == 0)
+                @if($companies->count() === 0 && !request()->has('filter'))
                     <div class="h-auto rounded border border-kdg-grey shadow-lg px-5 py-5 text-center">
                         <h4 class="text-lg font-medium tracking-tight text-deep-black">{{__('internships.no-internships')}}</h4>
                     </div>

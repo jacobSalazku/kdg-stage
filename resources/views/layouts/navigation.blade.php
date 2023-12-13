@@ -187,7 +187,7 @@
                                 </x-responsive-nav-link>
 
 
-
+                                <form>
                                     <x-responsive-nav-link :href="route('logout')"
                                             onclick="event.preventDefault();
                                                         this.closest('form').submit();">

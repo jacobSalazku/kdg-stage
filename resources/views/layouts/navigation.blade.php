@@ -91,9 +91,38 @@
                         </x-slot>
                     </x-dropdown>
                 @else
-                    <a href="{{ route('login') }}" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                        {{__('nav.login')}}
-                    </a>
+                    <x-dropdown align="right" width="48">
+                       <x-slot name="trigger">
+                          <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                             <svg fill="#000000" width="20px" height="20px" viewBox="0 0 32 32" id="Outlined" xmlns="http://www.w3.org/2000/svg">
+
+                                <title/>
+
+                                   <g id="Fill">
+
+                                      <path d="M24,17H8a5,5,0,0,0-5,5v7H5V22a3,3,0,0,1,3-3H24a3,3,0,0,1,3,3v7h2V22A5,5,0,0,0,24,17Z"/>
+
+                                        <path d="M16,15a6,6,0,1,0-6-6A6,6,0,0,0,16,15ZM16,5a4,4,0,1,1-4,4A4,4,0,0,1,16,5Z"/>
+
+                                   </g>
+
+                             </svg>
+                             <div class="ml-1">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                   <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                             </div>
+                          </button>
+                       </x-slot>
+                       <x-slot name="content">
+                          <x-dropdown-link  :href="route('login')">
+                            {{ __('login.title') }}
+                          </x-dropdown-link>
+                          <x-dropdown-link :href="route('register')">
+                            {{ __('register.title') }}
+                          </x-dropdown-link>
+                       </x-slot>
+                    </x-dropdown>
                 @endauth
             </div>
                 </div>

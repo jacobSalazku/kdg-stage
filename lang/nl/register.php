@@ -12,7 +12,7 @@ return [
     */
 
     'register' => 'Registreren:',
-    'title' => 'Register',
+    'title' => 'Registreren',
     'name' => 'Naam',
     'email' => 'Email',
     'company' => 'Bedrijf',

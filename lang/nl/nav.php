@@ -17,6 +17,7 @@ return [
     'new' => 'Nieuwe vacature',
     'profile' => 'Profiel',
     'login' => 'Inloggen',
+    'register' => 'Registreren',
     'logout' => 'Uitloggen',
     'language' => 'ENG',
     'link' => '/en/',

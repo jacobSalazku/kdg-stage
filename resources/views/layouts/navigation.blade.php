@@ -202,6 +202,9 @@
                                 <x-responsive-nav-link :href="route('login')">
                                     {{ __('nav.login') }}
                                 </x-responsive-nav-link>
+                                <x-responsive-nav-link :href="route('register')">
+                                    {{ __('nav.register') }}
+                                </x-responsive-nav-link>
                             </div>
                         </div>
                     @endif

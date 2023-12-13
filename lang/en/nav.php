@@ -17,6 +17,7 @@ return [
     'new' => 'New Job',
     'profile' => 'Profile',
     'login' => 'Log In',
+    'register' => 'Register',
     'logout' => 'Log Out',
     'language' => 'NL',
     'link' => '/nl/',

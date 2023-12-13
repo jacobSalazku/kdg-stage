@@ -47,4 +47,9 @@ return [
     'internship-update' => 'Stageplek werd succesvol aangepast',
     'internship-update-error' => 'Er ging iets fout bij het aanpassen van de stageplek. Probeer opnieuw.',
     'rights' => 'Je hebt niet genoeg rechten om deze actie uit te voeren',
+    'password_update' => 'Wachtwoord aanpassen',
+    'password_text' => 'Zorg ervoor dat je account een lang, willekeurig wachtwoord gebruikt om veilig te blijven.',
+    'current' => 'Huidig wachtwoord',
+    'new_password' => 'Nieuw wachtwoord',
+    'confirm' => 'Bevestig wachtwoord',
 ];

@@ -47,4 +47,9 @@ return [
     'internship-update' => 'Successfully updated internship',
     'internship-update-error' => 'Something went wrong when updating the internship. Please try again.',
     'rights' => 'You have no rights to perform this action',
+    'password_update' => 'Change Password',
+    'password_text' => 'Ensure that your account uses a long, random password to stay secure.',
+    'current' => 'Current Password',
+    'new_password' => 'New Password',
+    'confirm' => 'Confirm Password',
 ];

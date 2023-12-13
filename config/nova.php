@@ -212,7 +212,7 @@ return [
     |
     */
     'routes' => [
-        'login' => '/inloggen',
+        'login' => '/en/login',
     ],
 
 ];

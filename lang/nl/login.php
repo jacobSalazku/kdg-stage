@@ -16,4 +16,9 @@ return [
     'github' => 'Inloggen Met GitHub',
     'google' => 'Inloggen Met Google',
     'title' => 'Inloggen',
+    'email' => 'Email',
+    'password' => 'Wachtwoord',
+    'remember' => 'Onthoud me',
+    'forgot' => 'Wachtwoord vergeten?',
+    'login_button' => 'Log in',
 ];

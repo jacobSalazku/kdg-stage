@@ -10,7 +10,7 @@
                 </div>
                 <form action="{{route('search')}}" method="get" class="ml-auto">
                     <div class="flex flex-row items-center">
-                        <input type="text" name="query" id="query" placeholder="{{__('jobs.find')}}" class="block w-full sm:w-64 py-2 pl-10 pr-4 leading-5 rounded-full bg-gray-100 dark:bg-gray-700 border-transparent focus:outline-none focus:bg-white focus:border-gray-300 dark:focus:border-gray-500 focus:ring focus:ring-gray-200 dark:focus:ring-gray-400 transition duration-150 ease-in-out">
+                        <input type="text" name="query" id="query" value='{{$search ?? ''}}' placeholder="{{__('jobs.find')}}" class="block w-full sm:w-64 py-2 pl-10 pr-4 leading-5 rounded-full bg-gray-100 dark:bg-gray-700 border-transparent focus:outline-none focus:bg-white focus:border-gray-300 dark:focus:border-gray-500 focus:ring focus:ring-gray-200 dark:focus:ring-gray-400 transition duration-150 ease-in-out">
                         <button type="submit" class="w-full ml-2 px-3 py-2 rounded-full bg-deep-black text-kdg-white text-bold hover:bg-kdg-white hover:text-deep-black hover:border-deep-black border transition duration-150 ease-in-out">
                             {{__('jobs.search')}}
                         </button>
@@ -42,7 +42,7 @@
                 {{$jobs->links()}}
             </div>
         </div>
-        @if($jobs->count() == 0)
+        @if($jobs->count() === 0 && $filtered === 0)
             <div class="h-auto rounded border border-kdg-grey shadow-lg px-5 py-5 text-center">
                 <h4 class="text-lg font-medium tracking-tight text-deep-black ">{{__('jobs.no-jobs')}}</h4>
             </div>

@@ -47,6 +47,7 @@ class JobController extends Controller
 
                 return view('jobs', [
                     'jobs' => $jobs,
+                    'search' => $request->input('query'),
                     'filtered' => 1,
                 ]);
         }

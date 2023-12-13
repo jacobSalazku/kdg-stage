@@ -21,4 +21,9 @@ return [
     'edit' => 'aanpassen/{id}',
     'delete' => 'verwijderen/{id}',
     'create-internship' => 'stage-aanmaken',
+    'register' => 'registreren',
+    'login' => 'inloggen',
+    'forgot' => 'wachtwoord-vergeten',
+    'reset' => 'wachtwoord-resetten',
+    'reset-token' => 'wachtwoord-resetten/{token}'
 ];

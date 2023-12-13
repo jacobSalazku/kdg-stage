@@ -21,4 +21,9 @@ return [
     'edit' => 'edit/{id}',
     'delete' => 'delete/{id}',
     'create-internship' => 'create-internship',
+    'register' => 'register',
+    'login' => 'login',
+    'forgot' => 'forgot-password',
+    'reset' => 'reset-password',
+    'reset-token' => 'reset-password/{token}'
 ];

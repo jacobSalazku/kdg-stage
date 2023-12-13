@@ -10,7 +10,7 @@
         </div>
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-                {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+                {{ __('password.forgot_text') }}
             </div>
 
             <!-- Session Status -->
@@ -28,7 +28,7 @@
 
                 <div class="flex items-center mt-4">
                     <x-primary-button class="text-kdg-white bg-deep-black">
-                        {{ __('Email Password Reset Link') }}
+                        {{ __('password.email_button') }}
                     </x-primary-button>
                 </div>
             </form>

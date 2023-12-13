@@ -1,4 +1,4 @@
-@section('pagetitle', __('password.reset'))
+@section('pagetitle', __('password.reset_title'))
 <x-app-layout>
     <div class="flex h-full  flex-col justify-start items-center px-6 py-10 sm:px-8 bg-white">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -17,21 +17,21 @@
 
                 <!-- Email Address -->
                 <div>
-                    <x-input-label for="email" :value="__('Email')" />
+                    <x-input-label for="email" :value="__('password.email')" />
                     <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <!-- Password -->
                 <div class="mt-4">
-                    <x-input-label for="password" :value="__('Password')" />
+                    <x-input-label for="password" :value="__('password.password')" />
                     <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
 
                 <!-- Confirm Password -->
                 <div class="mt-4">
-                    <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+                    <x-input-label for="password_confirmation" :value="__('password.confirm')" />
 
                     <x-text-input id="password_confirmation" class="block mt-1 w-full"
                                   type="password"
@@ -42,7 +42,7 @@
 
                 <div class="flex items-center mt-4">
                     <x-primary-button class="bg-deep-black text-kdg-white">
-                        {{ __('Reset Password') }}
+                        {{ __('password.reset_button') }}
                     </x-primary-button>
                 </div>
             </form>

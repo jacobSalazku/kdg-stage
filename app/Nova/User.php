@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -63,6 +64,8 @@ class User extends Resource
                 'admin' => 'admin',
             ])->rules('required'),
 
+            Password::make('password'),
+
             HasMany::make('Job')->hideWhenUpdating(),
 
             HasOne::make('Internship')->hideWhenUpdating(),
@@ -117,11 +120,6 @@ class User extends Resource
     }
 
     public function authorizedToReplicate(Request $request)
-    {
-        return false;
-    }
-
-    public function authorizedToUpdate(Request $request)
     {
         return false;
     }

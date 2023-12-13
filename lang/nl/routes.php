@@ -25,5 +25,5 @@ return [
     'login' => 'inloggen',
     'forgot' => 'wachtwoord-vergeten',
     'reset' => 'wachtwoord-resetten',
-    'reset-token' => 'wachtwoord-resetten/{token}'
+    'reset-token' => 'wachtwoord-resetten/{token}',
 ];

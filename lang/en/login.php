@@ -20,5 +20,5 @@ return [
     'password' => 'Password',
     'remember' => 'Remember me',
     'forgot' => 'Forgot your password?',
-    'login_button' => 'Log in'
+    'login_button' => 'Log in',
 ];

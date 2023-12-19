@@ -46,7 +46,7 @@
                     </a>
                     <br>
                 @endforeach
-                @if(!$filtered ==  1)
+                @if($filtered !==  1)
                     {{$jobs->links()}}
                 @endif
             </div>

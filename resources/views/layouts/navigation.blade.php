@@ -4,7 +4,7 @@
             <div class="w-full h-24 flex flex-row justify-between items-center px-6">
                 <div class=" flex flex-row items-center  justify-center cursor-pointer">
                     <a href="{{ route('home') }}" class="font-KDG font text-3xl text-kdg-white">
-                        MCT
+                        KdG MCT
                     </a>
                 </div>
                 <div class="hidden lg:flex mlg:flex-row lg:items-center lg:space-x-4 gap-4 ">

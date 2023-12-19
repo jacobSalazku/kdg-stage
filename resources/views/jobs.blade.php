@@ -26,7 +26,14 @@
         <div class="w-full max-w-[87.5rem] flex flex-col items-center justify-center -bg-white dark:bg-gray-800 overflow-hidden mt-4 md:px-10">
             <div class="w-full p-6 text-gray-900 dark:text-gray-100">
                 @if ($filtered === 1)
-                    <h5 class="text-xl font-semibold leading-none text-gray-800 dark:text-gray-200">{{__('jobs.results')}} {{count($jobs)}}</h5>
+                    <h5 class="text-xl font-semibold leading-none text-gray-800 dark:text-gray-200">
+                        {{count($jobs)}}
+                        @if(count($jobs) <= 1)
+                            {{__('jobs.result', ['searchTerm' => $search])}}
+                        @else
+                            {{__('jobs.results', ['searchTerm' => $search])}}
+                        @endif
+                    </h5>
                 @endif
                 @foreach($jobs as $job)
                     <a href="{{route('detail', ['id' => $job->id])}}">

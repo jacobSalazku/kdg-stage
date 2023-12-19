@@ -15,7 +15,7 @@ return [
     'posted' => 'Geplaatst:',
     'find' => 'Vind vacatures',
     'search' => 'Zoek',
-    'back' => 'Terug',
+    'back' => 'Terug naar alle vacatures',
     'result' => "resultaat gevonden die met de zoekterm ':searchTerm' overeenkomt",
     'results' => "resultaten gevonden die met de zoekterm ':searchTerm' overeenkomen",
     'no-jobs' => 'Er werden nog geen jobs toegevoegd',

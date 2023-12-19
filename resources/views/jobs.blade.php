@@ -15,9 +15,6 @@
                             {{__('jobs.search')}}
                         </button>
                         @if($filtered === 1)
-                            <button class="w-full ml-2 px-3 py-2 rounded-full text-bold transition duration-150 ease-in-out bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none focus:bg-gray-200 dark:focus:bg-gray-600">
-                                <a href="{{route('jobs')}}">{{__('jobs.back')}}</a>
-                            </button>
                         @endif
                     </div>
                 </form>
@@ -25,16 +22,19 @@
         </div>
         <div class="w-full max-w-[87.5rem] flex flex-col items-center justify-center -bg-white dark:bg-gray-800 overflow-hidden mt-4 md:px-10">
             <div class="w-full p-6 text-gray-900 dark:text-gray-100">
-                @if ($filtered === 1)
-                    <h5 class="text-xl font-semibold leading-none text-gray-800 dark:text-gray-200">
-                        {{count($jobs)}}
-                        @if(count($jobs) <= 1)
-                            {{__('jobs.result', ['searchTerm' => $search])}}
-                        @else
-                            {{__('jobs.results', ['searchTerm' => $search])}}
-                        @endif
-                    </h5>
-                @endif
+                <div class="flex justify-between">
+                    @if ($filtered === 1)
+                        <h5 class="text-xl font-semibold leading-none text-gray-800 dark:text-gray-200">
+                            {{count($jobs)}}
+                            @if(count($jobs) === 1)
+                                {{__('jobs.result', ['searchTerm' => $search])}}
+                            @else
+                                {{__('jobs.results', ['searchTerm' => $search])}}
+                            @endif
+                        </h5>
+                        <a class="hover:underline" href="{{route('jobs')}}">{{__('jobs.back')}}</a>
+                    @endif
+                </div>
                 @foreach($jobs as $job)
                     <a href="{{route('detail', ['id' => $job->id])}}">
                         <div class="h-auto mt-6 rounded border border-kdg-grey shadow-lg flex flex-col justify-center items-start px-5 py-10 gap-8 cursor-pointer hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-70">
@@ -46,7 +46,9 @@
                     </a>
                     <br>
                 @endforeach
-                {{$jobs->links()}}
+                @if(! $filtered ===  1)
+                    {{$jobs->links()}}
+                @endif
             </div>
         </div>
         @if($jobs->count() === 0 && $filtered === 0)

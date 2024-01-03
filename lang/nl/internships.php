@@ -19,4 +19,7 @@ return [
     'created' => 'Aangemaakt:',
     'filter' => 'Filter verwijderen',
     'no-internships' => 'Er werden nog geen stageplekken toegevoegd',
+    'back' => 'Terug naar alle stageplekken',
+    'result' => "resultaat gevonden die met de filter ':filter' overeenkomt",
+    'results' => "resultaten gevonden die met de filter ':filter' overeenkomen",
 ];

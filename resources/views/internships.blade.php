@@ -12,9 +12,6 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                     </svg>
                 </button>
-                @if(request()->has('filter'))
-                    <a class="text-sm text-gray-700 dark:text-gray-400 ml-2" href="{{route('home')}}">{{__('internships.filter')}}</a>
-                @endif
                 <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
                         @foreach($tags as $tag)
@@ -27,6 +24,19 @@
             </div>
         </div>
         <div class="w-full max-w-[87.5rem] flex flex-col items-center justify-center -bg-white dark:bg-gray-800 overflow-hidden mt-4 md:px-10">
+            <div class="w-full flex justify-between col-span-3 px-6">
+                @if ($filtered === 1)
+                    <h5 class="text-xl font-semibold leading-none text-gray-800 dark:text-gray-200">
+                        {{count($companies)}}
+                        @if(count($companies) === 1)
+                            {{__('internships.result', ['filter' => $filter])}}
+                        @else
+                            {{__('internships.results', ['filter' => $filter])}}
+                        @endif
+                    </h5>
+                    <a class="hover:underline" href="{{route('home')}}">{{__('internships.back')}}</a>
+                @endif
+            </div>
             <div class="w-full p-6 text-gray-900 dark:text-gray-100 md:grid grid-cols-3 gap-2 justify-evenly">
                 @foreach($companies as $company)
                         <div class="h-auto rounded border border-kdg-grey shadow-lg flex flex-col justify-center items-start px-5 py-10 dark:bg-gray-800 mb-2">

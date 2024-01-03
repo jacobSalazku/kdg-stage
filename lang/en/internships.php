@@ -19,4 +19,7 @@ return [
     'created' => 'Created At:',
     'filter' => 'Clear filter',
     'no-internships' => 'No internships added yet',
+    'result' => "result found that match the filter ':filter'",
+    'results' => "results found that match the filter ':filter'",
+    'back' => 'Back to all internships',
 ];

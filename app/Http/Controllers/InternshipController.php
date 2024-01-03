@@ -30,6 +30,7 @@ class InternshipController extends Controller
                 $query->where('name', '=', $filter);
             })->get();
             $filtered = 1;
+            $filter = $request->filter;
         }
 
         $tags = Tag::all();
@@ -38,6 +39,7 @@ class InternshipController extends Controller
             'companies' => $companies,
             'tags' => $tags,
             'filtered' => $filtered,
+            'filter' => $filter,
         ]);
     }
 

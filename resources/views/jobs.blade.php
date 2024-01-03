@@ -35,22 +35,22 @@
                         <a class="hover:underline" href="{{route('jobs')}}">{{__('jobs.back')}}</a>
                     @endif
                 </div>
-                @foreach($jobs as $job)
-                    <a href="{{route('detail', ['id' => $job->id])}}">
-                        <div class="h-auto mt-6 rounded border border-kdg-grey shadow-lg flex flex-col justify-center items-start px-5 py-10 gap-8 cursor-pointer hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-70">
+                <div class="w-full max-w-[87.5rem] grid grid-cols-2 gap-6 mt-6">
+                    @foreach($jobs as $job)
+                        <a href="{{route('detail', ['id' => $job->id])}}" class="rounded border border-kdg-grey shadow-lg px-5 py-10 gap-8 cursor-pointer hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-70">
                             <h3 class="mb-1 text-3xl font-bold tracking-tight text-kdg-dark-blue ">{{$job->title}} </h3>
                             <h4 class="mb-1 text-lg font-medium tracking-tight text-deep-black ">{{$job->company}}</h4>
                             <p class="font-normal text-gray-700 dark:text-gray-400">{{ substr(strip_tags($job->description), 0, 250) }} ...</p>
                             <p class="mt-2 text-sm text-p-black dark:text-gray-400">{{__('jobs.posted')}} {{$job->updated_at->format('d-m-y H:i')}}</p>
-                        </div>
-                    </a>
-                    <br>
-                @endforeach
+                        </a>
+                    @endforeach
+                </div>
                 @if($filtered !==  1)
                     {{$jobs->links()}}
                 @endif
             </div>
         </div>
+        <br>
         @if($jobs->count() === 0 && $filtered === 0)
             <div class="h-auto rounded border border-kdg-grey shadow-lg px-5 py-5 text-center">
                 <h4 class="text-lg font-medium tracking-tight text-deep-black ">{{__('jobs.no-jobs')}}</h4>

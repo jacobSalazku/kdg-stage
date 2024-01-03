@@ -45,14 +45,17 @@
                         </a>
                     @endforeach
                 </div>
-                @if($filtered !==  1)
-                    {{$jobs->links()}}
-                @endif
                 @if($jobs->count() === 0 && $filtered === 0)
                     <div class="h-auto rounded border border-kdg-grey shadow-lg px-5 py-5 text-center">
                         <h4 class="text-lg font-medium tracking-tight text-deep-black ">{{__('jobs.no-jobs')}}</h4>
                     </div>
                 @endif
+                <br>
+                <div class="mt-2">
+                    @if($filtered !==  1)
+                        {{$jobs->links()}}
+                    @endif
+                </div>
             </div>
         </div>
     </div>

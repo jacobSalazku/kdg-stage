@@ -26,7 +26,7 @@ class NewJobCreated extends Notification
         $this->title = $title;
         $this->company = $company;
         $this->contact = $contact;
-        $this -> jobId = $jobId;
+        $this->jobId = $jobId;
     }
 
     /**

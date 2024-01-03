@@ -40,6 +40,13 @@ php artisan key:generate
 
 3. Environment credentials invullen:
 ```env
+APP_NAME="Stage"
+APP_ENV=
+APP_KEY=
+APP_DEBUG=
+APP_URL=
+```
+```env
 DB_CONNECTION=
 DB_HOST=
 DB_PORT=
@@ -61,6 +68,19 @@ GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 
 TURNSTILE_SECRET_KEY=
+
+NOVA_LICENSE_KEY=
+```
+
+```env
+MAIL_MAILER=
+MAIL_HOST=
+MAIL_PORT=
+MAIL_USERNAME=
+MAIL_PASSWORD=
+MAIL_ENCRYPTION=
+MAIL_FROM_ADDRESS="stage@studentsandmore.be"
+MAIL_FROM_NAME="${APP_NAME}"
 ```
 
 4. Database + tables aanmaken: 

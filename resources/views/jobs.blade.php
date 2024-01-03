@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="w-full max-w-[87.5rem] flex flex-col items-center justify-center -bg-white dark:bg-gray-800 overflow-hidden mt-4 md:px-10">
-            <div class="w-full p-6 text-gray-900 dark:text-gray-100">
+            <div class="p-6 text-gray-900 dark:text-gray-100">
                 <div class="flex justify-between">
                     @if ($filtered === 1)
                         <h5 class="text-xl font-semibold leading-none text-gray-800 dark:text-gray-200">
@@ -48,13 +48,12 @@
                 @if($filtered !==  1)
                     {{$jobs->links()}}
                 @endif
+                @if($jobs->count() === 0 && $filtered === 0)
+                    <div class="h-auto rounded border border-kdg-grey shadow-lg px-5 py-5 text-center">
+                        <h4 class="text-lg font-medium tracking-tight text-deep-black ">{{__('jobs.no-jobs')}}</h4>
+                    </div>
+                @endif
             </div>
         </div>
-        <br>
-        @if($jobs->count() === 0 && $filtered === 0)
-            <div class="h-auto rounded border border-kdg-grey shadow-lg px-5 py-5 text-center">
-                <h4 class="text-lg font-medium tracking-tight text-deep-black ">{{__('jobs.no-jobs')}}</h4>
-            </div>
-        @endif
     </div>
 </x-app-layout>

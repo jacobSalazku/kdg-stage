@@ -24,10 +24,12 @@ class InternshipController extends Controller
 
         if ($filter == null) {
             $companies = Internship::where('published', 1)->where('offer', 1)->paginate(6);
-        } elseif ($filter !== null) {
+            $filtered = 0;
+        } else {
             $companies = Internship::where('published', 1)->whereHas('tags', function ($query) use ($filter) {
                 $query->where('name', '=', $filter);
-            })->paginate(8);
+            })->get();
+            $filtered = 1;
         }
 
         $tags = Tag::all();
@@ -35,6 +37,7 @@ class InternshipController extends Controller
         return view('internships', [
             'companies' => $companies,
             'tags' => $tags,
+            'filtered' => $filtered,
         ]);
     }
 

@@ -58,9 +58,11 @@
                         <h4 class="text-lg font-medium tracking-tight text-deep-black">{{__('internships.no-internships')}}</h4>
                     </div>
                 @endif
-                    <div class="col-span-3">
-                        {{ $companies->links() }}
-                    </div>
+                @if($filtered !==  1)
+                   <div class="col-span-3">
+                      {{ $companies->links() }}
+                   </div>
+                @endif
             </div>
         </div>
     </div>

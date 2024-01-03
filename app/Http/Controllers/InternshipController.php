@@ -59,6 +59,10 @@ class InternshipController extends Controller
 
         $internship = Internship::firstOrNew(['email' => $request->email]);
 
+        if (! $internship->exists) {
+            $notification = 1;
+        }
+
         $internship->user_id = Auth::user()->id;
         $internship->company = $request->company;
         $internship->email = $request->email;
@@ -74,17 +78,17 @@ class InternshipController extends Controller
         $lang = Config::get('app.locale');
 
         if ($captcha) {
-            if (! $internship->exists) {
-                $admins = User::where('role', 'admin')->get();
-
-                foreach ($admins as $admin) {
-                    Notification::route('mail', $admin->email)->notify(new NewInternshipCreated($internship->company, $internship->contact));
-                }
-            }
-
             if ($request->offer === 'on') {
                 $internship->offer = 1;
                 $internship->save();
+
+                if ($notification === 1) {
+                    $admins = User::where('role', 'admin')->get();
+
+                    foreach ($admins as $admin) {
+                        Notification::route('mail', $admin->email)->notify(new NewInternshipCreated($internship->company, $internship->contact, $internship->id));
+                    }
+                }
             } else {
                 $internship->offer = 0;
                 $internship->save();

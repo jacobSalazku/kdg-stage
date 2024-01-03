@@ -71,7 +71,7 @@ class JobController extends Controller
             $job->save();
             $admins = User::where('role', 'admin')->get();
             foreach ($admins as $admin) {
-                Notification::route('mail', $admin->email)->notify(new NewJobCreated($job->title, $job->company, $job->contact));
+                Notification::route('mail', $admin->email)->notify(new NewJobCreated($job->title, $job->company, $job->contact, $job->id));
             }
 
             return redirect('/'.$lang.'/dashboard')->with('success', Lang::get('form.job-make'));

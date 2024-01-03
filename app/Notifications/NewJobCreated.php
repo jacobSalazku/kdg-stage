@@ -16,14 +16,17 @@ class NewJobCreated extends Notification
 
     protected $contact;
 
+    protected $jobId;
+
     /**
      * Create a new notification instance.
      */
-    public function __construct($title, $company, $contact)
+    public function __construct($title, $company, $contact, $jobId)
     {
         $this->title = $title;
         $this->company = $company;
         $this->contact = $contact;
+        $this -> jobId = $jobId;
     }
 
     /**
@@ -42,12 +45,12 @@ class NewJobCreated extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('New job Created')
-            ->line('A new job has been created and needs review.')
-            ->line('Job Title: '.$this->title)
-            ->line('Company: '.$this->company)
-            ->line('Contact: '.$this->contact)
-            ->action('Review jobs', url('/nova/resources/jobs'));
+            ->subject('Nieuwe vacature aangemaakt')
+            ->line('Er werd zojuist een nieuwe vacature aangemaakt en deze moet nog gecontroleerd worden.')
+            ->line('Titel: '.$this->title)
+            ->line('Bedrijf: '.$this->company)
+            ->line('Contactpersoon: '.$this->contact)
+            ->action('Vacature controleren', url('/nova/resources/jobs/'.$this->jobId));
     }
 
     /**

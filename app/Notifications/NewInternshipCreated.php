@@ -14,13 +14,16 @@ class NewInternshipCreated extends Notification
 
     protected $contact;
 
+    protected $jobId;
+
     /**
      * Create a new notification instance.
      */
-    public function __construct($company, $contact)
+    public function __construct($company, $contact, $jobId)
     {
         $this->company = $company;
         $this->contact = $contact;
+        $this->jobId = $jobId;
     }
 
     /**
@@ -39,11 +42,11 @@ class NewInternshipCreated extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('New internship Created')
-            ->line('A new internship has been created and needs review.')
-            ->line('Company: '.$this->company)
-            ->line('Contact: '.$this->contact)
-            ->action('Review internships', url('/nova/resources/internships'));
+            ->subject('Nieuwe stageplek aangemaakt')
+            ->line('Er werd zojuist een nieuwe stageplek aangemaakt en deze moet nog gecontroleerd worden.')
+            ->line('Bedrijf: '.$this->company)
+            ->line('Contactpersoon: '.$this->contact)
+            ->action('Stageplek controleren', url('/nova/resources/internships/'.$this->jobId));
     }
 
     /**

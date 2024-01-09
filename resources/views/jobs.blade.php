@@ -35,7 +35,7 @@
                         <a class="hover:underline" href="{{route('jobs')}}">{{__('jobs.back')}}</a>
                     @endif
                 </div>
-                <div class="w-full max-w-[87.5rem] grid grid-cols-2 gap-6 mt-6">
+                <div class="w-full max-w-[87.5rem] md:grid grid-cols-2 gap-6 mt-6">
                     @foreach($jobs as $job)
                         <a href="{{route('detail', ['id' => $job->id])}}" class="rounded border border-kdg-grey shadow-lg px-5 py-10 gap-8 cursor-pointer hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-70">
                             <h3 class="mb-1 text-3xl font-bold tracking-tight text-kdg-dark-blue ">{{$job->title}} </h3>
